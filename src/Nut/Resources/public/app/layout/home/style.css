@@ -1,0 +1,104 @@
+main {
+	background: #fafafa;
+    font-size: 14px;
+}
+
+header {
+	background: #505061;
+	color: white;
+	padding: 15px;
+	border-bottom: solid 1px #3d3d47;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.15);   
+	z-index: 3;
+    position: relative;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.container {
+	max-width: 1024px;
+	min-height: 100vh;
+}
+
+nav {
+	width: 100%;
+	min-width: 300px;
+	max-width: 300px;
+}
+
+nav .nav-list {
+	display: block;
+	font-size: 16px;
+}
+
+.paper {
+	background-color: #fff;
+    padding: 0 20px;
+    border: 1px solid #f1f1f1;
+    border-width: 0 1px 0 1px;
+    margin: 10px;
+}
+
+
+.project-icon {
+	margin-right: 12px;
+}
+
+.nav-list .nav-element {
+	padding: 7px 6px;
+	font-size: 14px;
+}
+
+.nav-list .nav-element.editing {
+	padding: 0 6px;
+}
+
+.nav-list > * {
+	width: 100%;
+}
+
+.project-list .nav-element{
+	width: 100%;
+	text-decoration: none;
+	transition: background 0.3s;
+	cursor: pointer;
+	text-decoration: none;
+}
+.project-list > * {
+	position: relative;
+}
+
+.project-list .dropdown {
+	position: absolute;
+	right: 15px;
+	cursor: pointer;
+}
+
+
+.project-list > *:hover .nav-element:not(.editing) {
+	background: white;
+}
+
+.project-list > *.active .nav-element:not(.editing) {
+	background: white;
+	font-weight: bold;
+}
+
+.project-list > * .project-dropdown {
+
+}
+
+.project-list > *:hover .project-dropdown {
+
+	opacity: 1.0;
+}
+
+
+.project-list input[name="name"] {
+	margin:10px 0;
+}
+
+.container-actions .bar-actions >*:first-child  {
+	margin-right: 10px;
+}

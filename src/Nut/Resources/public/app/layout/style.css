@@ -1,0 +1,167 @@
+
+
+body{
+    background-color: #fff;
+    margin: 0;
+}
+
+body {
+	color: rgb(32, 32, 32);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+    font-size: 13px;
+}
+
+a {
+    color: #636b6f;
+}
+
+main {
+
+    padding-top: 51px;
+}
+
+.header-content {
+    width: 100%;
+    max-width: 1024px;
+    margin:0 auto;
+    padding:0 15px;
+}
+
+.header-content > div {
+    padding:0 15px;
+}
+
+
+.fluid {
+	display: flex;
+}
+
+.fluid-vcenter {
+	align-items: center;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.fill {
+	flex-grow: 1;
+}
+
+.link {
+	cursor:pointer;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+.fluid-cleft {
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.modal-content {
+    box-shadow: 0 1px 10px rgba(0,0,0,.5)
+}
+.modal-small .modal-dialog {
+    max-width: 400px;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.dropdown-menu .dropdown-item{
+	display: block;
+	padding: 8px 12px;
+}
+
+.dropdown-menu .dropdown-item:hover{
+
+    background: #505061;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-divider {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    margin: 5px 0;
+}
+
+.dropdown-subtitle {
+    padding: 3px 12px;
+    color: rgba(0, 0, 0, 0.7);
+}
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+
+.btn {
+	border-radius: 1px;
+}
+
+.btn-primary {
+	background: #505061;
+	border: none;
+}
+
+.btn-primary:hover {
+	background: #7c7c97;
+}
+
+
+.action {
+	cursor: pointer;
+}
+.action i {
+	margin-right: 12px;
+}
+
+.btn-action-icon {
+    font-size: 19px;
+    text-align: center;
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 3px 6px;
+}
+
+.btn-action-icon:hover{
+    opacity: 1.0;
+}
+
+.action {
+	color: #db4c3f;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.popover.bottom>.arrow:after {
+    border-bottom-color: #505061; 
+}
+
+.popover-title {
+    background: #505061;
+    color: white;
+}
+
+.popover {
+    padding: 0;
+    border: none;
+}
