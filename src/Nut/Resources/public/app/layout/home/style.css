@@ -72,13 +72,44 @@ nav .nav-project:not(:last-child){
 
 .nav-project {
 	background: white;
+	cursor: pointer;
+}
+
+.nav-project > div {
 	padding: 10px 20px;
+}
+
+
+.nav-project-info {
+	padding-left: 0 !important;
+	white-space: nowrap;
+    overflow: hidden;
+}
+
+.nav-project-action-icon {
+	opacity: 0.5;
+	font-size: 18px;
+
 }
 
 .nav-project-icon {
 	font-size: 24px;
-	opacity: 0.5;
-	padding-right: 20px;
+}
+
+.nav-project-actions {
+	border-left: 1px solid #efefef;
+}
+
+.nav-project:hover {
+	background: rgba(0, 0, 0, 0.005);
+}
+
+.nav-project:not(:hover) .nav-project-actions{
+	visibility: hidden;
+}
+
+.nav-project-actions:hover {
+	background: rgba(0, 0, 0, 0.01);
 }
 
 ::-webkit-scrollbar {

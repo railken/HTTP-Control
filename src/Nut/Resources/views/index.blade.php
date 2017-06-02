@@ -67,15 +67,20 @@
         </div>
     </template>
     <template data-name='nav-projects'>
-        
+
         {#user.projects}
-            <div class='nav-project fluid fluid-vcenter'>
+            <div class='nav-project fluid fluid-stretch'>
                 <div class='nav-project-icon'>
-                    <i class='fa fa-cubes'></i>
+                    <i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>
                 </div>
-                <div>
+                <div class='nav-project-info fill'>
                     <div>{name}</div>
                     <div class='text-sm'>0 requests</div>
+                </div>
+                <div class='nav-project-actions fluid fluid-vcenter'>
+                    <!--<div><i class='fa fa-users nav-project-action-icon'></i></div>-->
+                    <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
+
                 </div>
             </div>
         {/user.projects}
