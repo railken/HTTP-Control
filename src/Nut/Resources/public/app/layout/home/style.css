@@ -34,7 +34,6 @@ nav .nav-list {
 
 .paper {
 	background-color: #fff;
-    padding: 0 20px;
     border: 1px solid #f1f1f1;
     border-width: 0 1px 0 1px;
     margin: 10px;
@@ -101,4 +100,8 @@ nav .nav-list {
 
 .container-actions .bar-actions >*:first-child  {
 	margin-right: 10px;
+}
+
+.modal textarea {
+    resize: vertical;
 }

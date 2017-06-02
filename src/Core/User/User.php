@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Railken\Laravel\Manager\ModelContract;
 
 use Core\Project\Project;
-use Core\Task\Task;
 
 class User extends Authenticatable implements ModelContract
 {

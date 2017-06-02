@@ -93,83 +93,15 @@
     <!--<script src="{{ assets('Nut::app/layout/sign-in/main.js') }}"></script>-->
     <script src="{{ assets('Nut::app/layout/home/events.js') }}"></script>
 
+
     <script>
-        var App = new Application();
 
-        function config(name)
-        {
-
-            var configs = {
-                url: "{{ env('APP_URL') }}"
-            };
-
-            return configs[name];
-        }
-
-        function reload()
-        {   
-            // Close all modals
-            $('.modal.in').modal('hide');
-            
-            // Reload route
-            App.get('router')._lastRouteResolved = null;
-            App.get('router').resolve();
-
-            $('.modal-backdrop.fade.in').remove();
-            
-        }
-
-        $(document).ready(function(){
-
-            App.set('api', new Api());
-            App.get('api').setUrl("{{ env('APP_API_URL') }}");
-            App.set('flash', new Flash());
-
-            App.init();
-
-
-            App.addListener('loaded', function() {
-                toggle.reload();
-            });
-
-
-        });
-
-        var LoaderServiceProvider = function() {
-            this.name = 'loader';
-            this.initialize = function(self, next) {
-
-                App.get('router').resolve();
-                $('.page-loader').remove();
-                next();
-            };
-        }
-
-        var AuthenticatedServiceProvider = function() {
-
-            // This will handle redirect for guest user
-
-            this.name = 'authenticated';
-            this.initialize = function(self, next) {
-
-                if (!App.get('user')) {
-
-                    App.get('router').navigate('/sign-in');
-                    
-
-                }
-                next();
-            };
+        var configs = {
+            url: "{{ env('APP_URL') }}",
+            api_url: "{{ env('APP_API_URL') }}"
         };
+
     </script>
 
-    <script>
-        App.addProviders([
-            AuthServiceProvider,
-            RouteServiceProvider,
-            AuthenticatedServiceProvider,
-            LoaderServiceProvider,
-        ]);
-    </script>
-
+    <script src="{{ assets('Nut::app/bootstrap.js') }}"></script>
 @endsection

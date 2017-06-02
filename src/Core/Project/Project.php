@@ -7,7 +7,6 @@ use Railken\Laravel\Manager\ModelContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Core\User\User;
-use Core\Task\Task;
 
 class Project extends Model implements ModelContract
 {

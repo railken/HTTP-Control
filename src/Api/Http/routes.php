@@ -29,16 +29,6 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::put('/{id}', ['uses' => 'ProjectsController@update']);
             Route::delete('/{ids}', ['uses' => 'ProjectsController@delete']);
         });
-
-        Route::group(['prefix' => 'tasks'], function () {
-            Route::get('/', ['uses' => 'TasksController@index']);
-            Route::post('/', ['uses' => 'TasksController@create']);
-            Route::get('/{id}', ['uses' => 'TasksController@show']);
-            Route::put('/{id}', ['uses' => 'TasksController@update']);
-            Route::post('/{id}/done', ['uses' => 'TasksController@done']);
-            Route::post('/{id}/undone', ['uses' => 'TasksController@undone']);
-            Route::delete('/{ids}', ['uses' => 'TasksController@delete']);
-        });
     });
 
 

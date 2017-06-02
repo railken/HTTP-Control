@@ -1,13 +1,18 @@
-$('body').on('submit', '.projects-add', function(e) {
+$('body').on('submit', "[name='projects-create']", function(e) {
 	e.preventDefault();
+
 	var input_name = $(this).find("[name='name']");
+	var input_description = $(this).find("[name='description']");
+
 
 	var resolver = new ProjectResolver();
 	resolver.create({
-		name: input_name.val()
+		name: input_name.val(),
+		description: input_description.val()
 	});
 
 	input_name.val('');
+	input_description.val('');
 });
 
 $('body').on('submit', '.projects-delete', function(e) {

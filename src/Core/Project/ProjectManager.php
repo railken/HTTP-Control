@@ -72,12 +72,6 @@ class ProjectManager extends ModelManager
     public function delete(ModelContract $entity)
     {
 
-        $tm = new TaskManager();
-
-        foreach ($entity->tasks as $task) {
-            $tm->delete($task);
-        }
-
         return parent::delete($entity);
     }
 }

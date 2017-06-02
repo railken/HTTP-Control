@@ -38,6 +38,7 @@ ProjectResolver.prototype.create = function(attributes)
 
 			App.get('user').getProjectBy('uid', tmp_id).fill(project);
 			self.template();
+			$('.modal').modal('hide');
 		},
 		error: function(response) {
 			App.get('flash').error(response.message);
