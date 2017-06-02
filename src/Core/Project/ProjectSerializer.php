@@ -10,6 +10,7 @@ class ProjectSerializer
         return [
             'id' => $project->id,
             'name' => $project->name,
+            'description' => $project->description,
         ];
     }
 }

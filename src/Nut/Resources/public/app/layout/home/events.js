@@ -32,13 +32,16 @@ $('body').on('submit', '.projects-edit', function(e) {
 
 	var id = $(this).find("[name='id']").val();
 	var input_name = $(this).find("[name='name']");
+	var input_description = $(this).find("[name='description']");
 
 	var resolver = new ProjectResolver();
 
 	resolver.update(id, {
-		name: input_name.val()
+		name: input_name.val(),
+		description: input_description.val()
 	});
 
 	input_name.val('');
+	input_description.val('');
 
 });

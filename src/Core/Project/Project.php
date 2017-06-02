@@ -25,7 +25,7 @@ class Project extends Model implements ModelContract
      *
      * @var array
      */
-    protected $fillable = ['name', 'user_id'];
+    protected $fillable = ['name', 'description', 'user_id'];
 
     /**
      * The attributes that should be mutated to dates.

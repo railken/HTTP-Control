@@ -83,7 +83,7 @@
                         <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="nav-project-actions">
-                        <a class="dropdown-item" href="#" data-open='2'>Edit project</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-form" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit project</a>
                         <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-delete" data-modal-id="input,{id}">Delete project</a>

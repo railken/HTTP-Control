@@ -79,15 +79,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method='POST' class="modal-footer projects-form">
+                <form method='POST' class="modal-footer projects-edit">
 
-                    <input type='text' class='form-control'  placeholder='Project name'>
+                    <input type='text' class='form-control' name='name' placeholder='Project name'>
                     <br>
-                    <textarea class='form-control' placeholder='Project description'></textarea>
+                    <textarea class='form-control' placeholder='Project description' rows='10' name='description'></textarea>
                     <br>
                     <input type='hidden' name='id' value=''>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" >Create</button>
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
                     
                 </form>
             </div>

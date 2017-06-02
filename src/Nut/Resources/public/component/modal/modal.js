@@ -17,6 +17,9 @@ $('body').on('show.bs.modal', '.modal', function (event) {
 				case 'input':
 					modal.find("[name='"+name+"']").val(info[1]);
 				break;
+				case 'textarea':
+					modal.find("[name='"+name+"']").val(info[1]);
+				break;
 			}
 
 		}

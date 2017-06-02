@@ -32,7 +32,7 @@ class ProjectManager extends ModelManager
      */
     public function fill(ModelContract $entity, array $params)
     {
-        $params = $this->getOnlyParams($params, ['name', 'user', 'user_id']);
+        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id']);
 
         if (isset($params['user']) || isset($params['user_id'])) {
             $this->vars['user'] = $this->fillManyToOneById($entity, new UserManager(), $params, 'user');

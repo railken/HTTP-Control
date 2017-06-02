@@ -112,6 +112,8 @@ ProjectResolver.prototype.update = function(id, attributes)
 
 				App.get('user').getProjectById(project.id).fill(project);
 				self.template();
+				
+				$('.modal').modal('hide');
 			},
 			error: function(response) {
 				App.get('flash').error(response.message);
