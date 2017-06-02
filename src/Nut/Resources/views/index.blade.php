@@ -69,19 +69,33 @@
     <template data-name='nav-projects'>
 
         {#user.projects}
-            <div class='nav-project fluid fluid-stretch'>
-                <div class='nav-project-icon'>
+            <div class='nav-project fluid fluid-stretch dropdown'>
+                <div class='nav-project-icon nav-project-spacing'>
                     <i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>
                 </div>
-                <div class='nav-project-info fill'>
+                <div class='nav-project-info nav-project-spacing fill'>
                     <div>{name}</div>
                     <div class='text-sm'>0 requests</div>
                 </div>
-                <div class='nav-project-actions fluid fluid-vcenter'>
-                    <!--<div><i class='fa fa-users nav-project-action-icon'></i></div>-->
-                    <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
+                <div class='fluid fluid-vcenter dropdown'>
+                    <div class='nav-project-actions fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-project-action">
+                        <!--<div><i class='fa fa-users nav-project-action-icon'></i></div>-->
+                        <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="nav-project-actions">
+                        <a class="dropdown-item" href="#" data-open='2'>Edit project</a>
+                        <div class="dropdown-divider"></div>
 
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-delete" data-modal-id="input,{id}">Delete project</a>
+                        <!--
+                        <form method='POST' class='projects-delete'>
+                            <input type='hidden' name='id' value='{id}'>
+                            <button class="dropdown-item" type='submit'>Leave project</button>
+                        </form>-->
+                    </div>
                 </div>
+
+               
             </div>
         {/user.projects}
         <br><br><br><br><br><br>

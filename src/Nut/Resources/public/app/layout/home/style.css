@@ -75,11 +75,16 @@ nav .nav-project:not(:last-child){
 	cursor: pointer;
 }
 
-.nav-project > div {
+.nav-project .nav-project-spacing {
 	padding: 10px 20px;
 }
 
 
+.nav-project .dropdown-menu {
+	left: auto;
+	right: 10px;
+	margin-top: -2px;
+}
 .nav-project-info {
 	padding-left: 0 !important;
 	white-space: nowrap;
@@ -97,6 +102,7 @@ nav .nav-project:not(:last-child){
 }
 
 .nav-project-actions {
+	padding: 10px 20px;
 	border-left: 1px solid #efefef;
 }
 

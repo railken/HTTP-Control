@@ -74,14 +74,9 @@ template.get = function(source, vars)
 
 	var source = template.getSource(source).html();
 
-	console.log(source);
 	Mustache.parse(source, ['{','}']);
 
-
-
 	var rendered = Mustache.render(source, vars);
-
-
 
 	return rendered;
 
