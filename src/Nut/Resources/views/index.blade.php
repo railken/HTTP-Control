@@ -55,7 +55,7 @@
             {/syncing}
 
             {^syncing}
-                <i class="fa fa-refresh rotate-1" aria-hidden="true"></i>
+                <i class="fa fa-refresh" aria-hidden="true"></i>
                 <span class='text-sm'>IN SYNC</span>
             {/syncing}
         </div>
@@ -66,6 +66,22 @@
             {user.username}
         </div>
     </template>
+    <template data-name='nav-projects'>
+        
+        {#user.projects}
+            <div class='nav-project fluid fluid-vcenter'>
+                <div class='nav-project-icon'>
+                    <i class='fa fa-cubes'></i>
+                </div>
+                <div>
+                    <div>{name}</div>
+                    <div class='text-sm'>0 requests</div>
+                </div>
+            </div>
+        {/user.projects}
+        <br><br><br><br><br><br>
+
+    </template>
     <template data-name='layout'>@include('Nut::base')</template>
     <template data-name='sign-in'>@include('Nut::sign-in')</template>
     <template data-name='home'>@include('Nut::home')</template>
@@ -74,6 +90,7 @@
 
 @section('scripts')
     
+    <link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/overcast/jquery-ui.css'>
     <script src="{{ assets('Nut::app/layout/main.js') }}"></script>
     <!-- vendor -->
     <script src="{{ assets('Nut::vendor/navigo/navigo/navigo.min.js') }}"></script>

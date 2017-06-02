@@ -2,25 +2,16 @@
 
 </header>
 
-<section class='fluid full-height container-left-side'>
+<section class='full-height container-left-side'>
+    <div class='side-left'>
+        <div class='container-left-side-top'>
+            <button class='btn btn-primary' data-toggle="modal" data-target="#project-create">new project</button>
+        </div>
+        <nav class='full-height nav-projects'>
 
-    <nav class='full-height'>
 
-
-        <button class='btn btn-primary' data-toggle="modal" data-target="#project-create">new project</button>
-        {#user.projects}
-            <div class='nav-project fluid fluid-vcenter'>
-                <div class='nav-project-icon'>
-                    <i class='fa fa-cubes'></i>
-                </div>
-                <div>
-                    <div>{name}</div>
-                    <div class='text-sm'>0 requests</div>
-                </div>
-            </div>
-        {/user.projects}
-
-    </nav>
+        </nav>
+    </div>
 
 </section>
 

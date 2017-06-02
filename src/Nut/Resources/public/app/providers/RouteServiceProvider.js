@@ -23,7 +23,11 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 	var main = template
 		.define('main')
 		.source('layout')
-		.vars({user: App.get('user') })
+		.vars(function() {
+			return {
+				user: App.get('user') 
+			}
+		})
 		.container(function() {
 			return $('main'); 
 		});
@@ -32,12 +36,20 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 	template
 		.define('nav-projects')
 		.source('nav-projects')
-		.vars({user: App.get('user') })
+		.vars(function() {
+			return {
+				user: App.get('user')
+			};
+		})
 		.container(function() {
 			return $('.nav-projects');
 		})
 		.ready(function() {
-	
+
+	    	$( ".side-left" ).resizable({
+	    	
+			});
+
 			toggle.reload();
 		})
 		.parent(main);
@@ -46,7 +58,11 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 	template
 		.define('header')
 		.source('header')
-		.vars({user: App.get('user'), syncing: function() { return App.get('syncing'); } })
+		.vars(function() {
+			return {
+				user: App.get('user'), syncing: App.get('syncing')
+			};
+		})
 		.container(function() {
 			return $('header');
 		})
@@ -92,7 +108,11 @@ RouteServiceProvider.prototype.initialize = function(self, next)
 			template
 				.define('home')
 				.source('home')
-				.vars({user: App.get('user')})
+				.vars(function() {
+					return {
+						user: App.get('user')
+					}
+				})
 				.container(function() {
 					return $('.content'); 
 				})
@@ -125,7 +145,13 @@ RouteServiceProvider.prototype.initialize = function(self, next)
 			template
 				.define('content')
 				.source('project')
-				.vars({project: project, user: App.get('user')})
+				.vars(function() {
+
+					return {
+						project: project, 
+						user: App.get('user')
+					};
+				})
 				.container(function() {
 					return $('.content');
 				})

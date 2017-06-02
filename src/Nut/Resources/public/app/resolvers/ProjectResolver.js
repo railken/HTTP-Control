@@ -11,7 +11,9 @@ var ProjectResolver = function()
  */
 ProjectResolver.prototype.template = function()
 {
+
 	template.load('nav-projects');
+	template.load('header');
 }
 
 /**
@@ -29,6 +31,7 @@ ProjectResolver.prototype.create = function(attributes)
 	var tmp_id = project.uid;
 	App.get('user').projects.push(project);
 
+	App.set('syncing', true);
 
 	self.template();
 
@@ -37,7 +40,10 @@ ProjectResolver.prototype.create = function(attributes)
 		success: function(project) {
 
 			App.get('user').getProjectBy('uid', tmp_id).fill(project);
+
+			App.set('syncing', false);
 			self.template();
+
 			$('.modal').modal('hide');
 		},
 		error: function(response) {

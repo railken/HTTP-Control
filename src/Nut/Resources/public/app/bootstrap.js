@@ -1,5 +1,7 @@
 var App = new Application();
 
+App.set('syncing', false);
+
 function config(name)
 {
     return configs[name];

@@ -53,6 +53,7 @@ template.set = function(source, vars, destination)
 template.html = function(html, destination)
 {
 
+
 	$(destination).html(html);
 	
 	setTimeout(function() {
@@ -70,13 +71,17 @@ template.html = function(html, destination)
  */
 template.get = function(source, vars)
 {
+
 	var source = template.getSource(source).html();
 
+	console.log(source);
 	Mustache.parse(source, ['{','}']);
 
 
 
 	var rendered = Mustache.render(source, vars);
+
+
 
 	return rendered;
 
@@ -104,7 +109,10 @@ template.load = function(name)
 
 		var container = part._container();
 
-		container.html(template.get(part._source, part._vars));
+		var vars = part._vars;
+
+
+		container.html(template.get(part._source, vars()));
 
 		part._ready();
 
@@ -123,7 +131,9 @@ template.load = function(name)
 template.getSource = function(source)
 {
 
+
 	var source = $.parseHTML("<div>"+template.source[source]+"</div>");
+
 	source = $(source);
 	source.children().addClass('template-new');
 	return source.clone();

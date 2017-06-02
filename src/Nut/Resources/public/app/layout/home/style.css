@@ -21,15 +21,19 @@ header {
 	min-height: 100vh;
 }
 
-nav {
+.side-left {
 	width: 100%;
-	min-width: 300px;
-	max-width: 300px;
+	min-width: 200px;
+	max-width: 600px;
 }
 
 nav .nav-list {
 	display: block;
 	font-size: 16px;
+}
+
+nav {
+	margin-bottom: 50px;
 }
 
 .paper {
@@ -43,10 +47,23 @@ nav .nav-list {
     resize: vertical;
 }
 
-.container-left-side {
-	overflow-y: scroll;   
+.container-left-side { 
 	position: fixed;
     max-height: 100%;
+    border: none;
+    border-right: 1px solid #e6e6e6;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.15);
+}
+
+.container-left-side-top {
+	padding: 6px 8px;
+	background: white;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+nav {
+
+	overflow-y: scroll;  
 }
 
 nav .nav-project:not(:last-child){

@@ -188,6 +188,10 @@ main {
     border: none;
 }
 
+.modal-content {
+    border: none;
+}
+
 
 .text-sm {
     font-size: 10px;
