@@ -187,3 +187,27 @@ main {
 .modal-footer {
     border: none;
 }
+
+
+.text-sm {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.header-container-user {
+    margin-left: 25px;
+}
+
+.rotate-1 {
+    transition-property: transform;
+    transition-duration: 1s;
+    animation-name: rotate; 
+    animation-duration: 1s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}

@@ -4,7 +4,7 @@ namespace Core\Project;
 
 class ProjectSerializer
 {
-    public function all(Project $project)
+    public function serialize(Project $project)
     {
 
         return [

@@ -14,9 +14,9 @@ class ProfileController extends Controller
      * Construct
      *
      */
-    public function __construct(UserSerializer $serializer)
+    public function __construct(UserManager $manager)
     {
-        $this->serializer = $serializer;
+        $this->manager = $manager;
     }
 
     /**
@@ -28,6 +28,6 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->success(['data' => ['resource' => $this->serializer->user(\Auth::user())]]);
+        return $this->success(['data' => ['resource' => $this->manager->serializer->serialize(\Auth::user())]]);
     }
 }

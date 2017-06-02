@@ -18,6 +18,7 @@ class ProjectManager extends ModelManager
     public function __construct()
     {
         $this->repository = new ProjectRepository();
+        $this->serializer = new ProjectSerializer();
         parent::__construct();
     }
 

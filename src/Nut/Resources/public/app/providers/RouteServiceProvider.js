@@ -46,11 +46,13 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 	template
 		.define('header')
 		.source('header')
-		.vars({user: App.get('user') })
+		.vars({user: App.get('user'), syncing: function() { return App.get('syncing'); } })
 		.container(function() {
 			return $('header');
 		})
-		.parent(main)
+		.parent(main);
+
+
 	return main;
 
 }

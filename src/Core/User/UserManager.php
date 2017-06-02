@@ -33,6 +33,7 @@ class UserManager extends ModelManager
     public function __construct()
     {
         $this->repository = new UserRepository();
+        $this->serializer = new UserSerializer();
     }
 
     /**

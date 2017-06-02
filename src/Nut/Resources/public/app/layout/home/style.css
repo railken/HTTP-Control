@@ -39,69 +39,41 @@ nav .nav-list {
     margin: 10px;
 }
 
-
-.project-icon {
-	margin-right: 12px;
-}
-
-.nav-list .nav-element {
-	padding: 7px 6px;
-	font-size: 14px;
-}
-
-.nav-list .nav-element.editing {
-	padding: 0 6px;
-}
-
-.nav-list > * {
-	width: 100%;
-}
-
-.project-list .nav-element{
-	width: 100%;
-	text-decoration: none;
-	transition: background 0.3s;
-	cursor: pointer;
-	text-decoration: none;
-}
-.project-list > * {
-	position: relative;
-}
-
-.project-list .dropdown {
-	position: absolute;
-	right: 15px;
-	cursor: pointer;
-}
-
-
-.project-list > *:hover .nav-element:not(.editing) {
-	background: white;
-}
-
-.project-list > *.active .nav-element:not(.editing) {
-	background: white;
-	font-weight: bold;
-}
-
-.project-list > * .project-dropdown {
-
-}
-
-.project-list > *:hover .project-dropdown {
-
-	opacity: 1.0;
-}
-
-
-.project-list input[name="name"] {
-	margin:10px 0;
-}
-
-.container-actions .bar-actions >*:first-child  {
-	margin-right: 10px;
-}
-
 .modal textarea {
     resize: vertical;
+}
+
+.container-left-side {
+	overflow-y: scroll;   
+	position: fixed;
+    max-height: 100%;
+}
+
+nav .nav-project:not(:last-child){
+	border-bottom: 1px solid #efefef;
+}
+
+.nav-project {
+	background: white;
+	padding: 10px 20px;
+}
+
+.nav-project-icon {
+	font-size: 24px;
+	opacity: 0.5;
+	padding-right: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    width: 6px;
+}
+
+::-webkit-scrollbar-corner {
+    background: #000;
 }

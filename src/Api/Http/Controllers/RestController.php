@@ -30,9 +30,7 @@ abstract class RestController extends Controller
      */
     public function serialize(ModelContract $entity)
     {
-        return [
-            'id' => $entity->id,
-        ];
+        return $this->manager->serializer->serialize($entity);
     }
 
     /**
@@ -55,6 +53,8 @@ abstract class RestController extends Controller
                 $qb->where($name, $search);
             }
         });
+
+        $query->where('user_id', $this->getUser()->id);
 
         $paginator = Paginator::retrieve($query, $request->input('page', 1), $request->input('show', 10));
 

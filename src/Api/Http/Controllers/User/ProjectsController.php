@@ -17,21 +17,8 @@ class ProjectsController extends Controller
      *
      * @param ProjectManager $manager
      */
-    public function __construct(ProjectManager $manager, ProjectSerializer $serializer)
+    public function __construct(ProjectManager $manager)
     {
         $this->manager = $manager;
-        $this->serializer = $serializer;
-    }
-
-    /**
-     * Return an array rappresentation of entity
-     *
-     * @param Railken\Laravel\Manager\ModelContract $entity
-     *
-     * @return array
-     */
-    public function serialize(ModelContract $entity)
-    {
-        return $this->serializer->all($entity);
     }
 }

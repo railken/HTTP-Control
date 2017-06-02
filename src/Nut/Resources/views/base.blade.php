@@ -1,13 +1,26 @@
 <header class='fluid'>
-</header>
-<section class='fluid full-height'>
 
-    <nav class='paper full-height'>
-        <hr>
+</header>
+
+<section class='fluid full-height container-left-side'>
+
+    <nav class='full-height'>
+
+
         <button class='btn btn-primary' data-toggle="modal" data-target="#project-create">new project</button>
+        {#user.projects}
+            <div class='nav-project fluid fluid-vcenter'>
+                <div class='nav-project-icon'>
+                    <i class='fa fa-cubes'></i>
+                </div>
+                <div>
+                    <div>{name}</div>
+                    <div class='text-sm'>0 requests</div>
+                </div>
+            </div>
+        {/user.projects}
 
     </nav>
-    <div class='paper full-height fill'></div>
 
 </section>
 

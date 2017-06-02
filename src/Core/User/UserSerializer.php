@@ -5,11 +5,11 @@ namespace Core\User;
 use Core\User\User;
 use League\OAuth2\Server\CryptKey;
 
-use Core\Project\ProjectSerializer;
+use Core\Project\ProjectManager;
 
 class UserSerializer
 {
-    public function user(User $user)
+    public function serialize(User $user)
     {
         return [
             'id' => $user->id,
@@ -21,10 +21,10 @@ class UserSerializer
 
     public function projects($projects)
     {
-        $serializer = new ProjectSerializer;
+        $serializer = (new ProjectManager)->serializer;
 
         return $projects->map(function ($project) use ($serializer) {
-            return $serializer->all($project);
+            return $serializer->serialize($project);
         });
     }
 

@@ -43,6 +43,29 @@
         </div>
     </div>
 
+    <template data-name='header'>
+        <div class='fill'>
+
+        </div>
+        <div class='header-sync-container'>
+
+            {#syncing}
+                <i class="fa fa-refresh rotate-1" aria-hidden="true"></i>
+                <span class='text-sm'>SYNCING</span>
+            {/syncing}
+
+            {^syncing}
+                <i class="fa fa-refresh rotate-1" aria-hidden="true"></i>
+                <span class='text-sm'>IN SYNC</span>
+            {/syncing}
+        </div>
+        <div>
+            &nbsp;&nbsp;
+        </div>
+        <div class='header-container-user'>
+            {user.username}
+        </div>
+    </template>
     <template data-name='layout'>@include('Nut::base')</template>
     <template data-name='sign-in'>@include('Nut::sign-in')</template>
     <template data-name='home'>@include('Nut::home')</template>
