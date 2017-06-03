@@ -74,14 +74,14 @@
         <div class='side-left'>
 
             <div class='full-height fluid'>
-                <nav class='full-height nav-companies'>
-                    {#user.companies}
-                        <div class='nav-company' data-name='{name}'>
+                <nav class='full-height nav-teams'>
+                    {#user.teams}
+                        <div class='nav-team' data-name='{name}'>
 
                         </div>
-                    {/user.companies}
+                    {/user.teams}
 
-                    <div class='nav-company'  data-toggle="modal" data-target="#company-create">
+                    <div class='nav-team'  data-toggle="modal" data-target="#team-create">
                         <i class='fa fa-plus'></i>
                     </div>
                 </nav>
@@ -93,13 +93,13 @@
                         <div class='fill'></div>
 
                         <div class='fluid fluid-stretch dropdown'>
-                            <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-company-actions">
+                            <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
                          
                                 <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
                             </div>
-                            <div class="dropdown-menu" aria-labelledby="nav-company-actions">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#company-edit" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit company</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#company-delete" data-modal-id="input,{id}">Delete company</a>
+                            <div class="dropdown-menu" aria-labelledby="nav-team-actions">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-edit" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit team</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-delete" data-modal-id="input,{id}">Delete team</a>
 
                                 <div class="dropdown-divider"></div>
 
@@ -198,15 +198,15 @@
     <script src="{{ assets('Nut::core/User/User.js') }}"></script>
     <script src="{{ assets('Nut::core/Project/ProjectManager.js') }}"></script>
     <script src="{{ assets('Nut::core/Project/Project.js') }}"></script>
-    <script src="{{ assets('Nut::core/Company/CompanyManager.js') }}"></script>
-    <script src="{{ assets('Nut::core/Company/Company.js') }}"></script>
+    <script src="{{ assets('Nut::core/Team/TeamManager.js') }}"></script>
+    <script src="{{ assets('Nut::core/Team/Team.js') }}"></script>
     <!-- app -->
     <script src="{{ assets('Nut::app/providers/RouteServiceProvider.js') }}"></script>
     <script src="{{ assets('Nut::app/providers/AuthServiceProvider.js') }}"></script>
 
 
     <script src="{{ assets('Nut::app/resolvers/ProjectResolver.js') }}"></script>
-    <script src="{{ assets('Nut::app/resolvers/CompanyResolver.js') }}"></script>
+    <script src="{{ assets('Nut::app/resolvers/TeamResolver.js') }}"></script>
     <script src="{{ assets('Nut::app/layout/sign-in/auth.js') }}"></script>
     <script src="{{ assets('Nut::app/layout/sign-in/events.js') }}"></script>
     <!--<script src="{{ assets('Nut::app/layout/sign-in/main.js') }}"></script>-->

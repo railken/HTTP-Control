@@ -8,7 +8,7 @@ use Railken\Laravel\Manager\Permission\ResourceContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Core\User\User;
-use Core\Company\Company;
+use Core\Team\Team;
 
 class Project extends Model implements ModelContract, ResourceContract
 {
@@ -27,7 +27,7 @@ class Project extends Model implements ModelContract, ResourceContract
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'user_id', 'company_id'];
+    protected $fillable = ['name', 'description', 'user_id', 'team_id'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -47,9 +47,9 @@ class Project extends Model implements ModelContract, ResourceContract
     /**
      * User
      */
-    public function company()
+    public function team()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Team::class);
     }
 
     /**

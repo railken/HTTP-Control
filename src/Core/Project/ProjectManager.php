@@ -8,7 +8,7 @@ use Railken\Laravel\Manager\ModelManager;
 use Core\Project\Project;
 
 use Core\User\UserManager;
-use Core\Company\CompanyManager;
+use Core\Team\TeamManager;
 
 class ProjectManager extends ModelManager
 {
@@ -33,14 +33,14 @@ class ProjectManager extends ModelManager
      */
     public function fill(ModelContract $entity, array $params)
     {
-        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id', 'company', 'company_id']);
+        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id', 'team', 'team_id']);
 
         if (isset($params['user']) || isset($params['user_id'])) {
             $this->vars['user'] = $this->fillManyToOneById($entity, new UserManager(), $params, 'user');
         }
 
-        if (isset($params['company']) || isset($params['company_id'])) {
-            $this->vars['company'] = $this->fillManyToOneById($entity, new CompanyManager(), $params, 'company');
+        if (isset($params['team']) || isset($params['team_id'])) {
+            $this->vars['team'] = $this->fillManyToOneById($entity, new TeamManager(), $params, 'team');
         }
 
         $entity->fill($params);
@@ -58,15 +58,15 @@ class ProjectManager extends ModelManager
     public function save(ModelContract $entity)
     {
         $entity->user()->associate($this->vars->get('user', $entity->user));
-        $entity->company()->associate($this->vars->get('company', $entity->company));
+        $entity->team()->associate($this->vars->get('team', $entity->team));
 
         $this->throwExceptionParamsNull([
             'name' => $entity->name,
             'user' => $entity->user,
-            'company' => $entity->company
+            'team' => $entity->team
         ]);
 
-        $this->throwExceptionAccessDenied('company.show', $entity->company);
+        $this->throwExceptionAccessDenied('team.show', $entity->team);
         $this->throwExceptionAccessDenied('project.save', $entity);
 
         return parent::save($entity);

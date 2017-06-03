@@ -1,15 +1,15 @@
 <?php
 
-namespace Core\Company;
+namespace Core\Team;
 
 use Railken\Laravel\Manager\ModelContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Permission\AgentContract;
 
-use Core\Company\Company;
+use Core\Team\Team;
 use Core\User\UserManager;
 
-class CompanyManager extends ModelManager
+class TeamManager extends ModelManager
 {
 
 	/**
@@ -17,8 +17,8 @@ class CompanyManager extends ModelManager
 	 */
 	public function __construct(AgentContract $agent = null)
 	{
-		$this->repository = new CompanyRepository($this);
-		$this->serializer = new CompanySerializer($this);
+		$this->repository = new TeamRepository($this);
+		$this->serializer = new TeamSerializer($this);
 
 		parent::__construct($agent);
 	}
@@ -61,7 +61,7 @@ class CompanyManager extends ModelManager
 			'name' => $entity->name,
 		]);
 
-        $this->throwExceptionAccessDenied('company.save', $entity);
+        $this->throwExceptionAccessDenied('team.save', $entity);
 
 		return parent::save($entity);
 	}

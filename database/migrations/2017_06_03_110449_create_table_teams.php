@@ -13,7 +13,7 @@ class CreateTableCompanies extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function($table) {
+        Schema::create('teams', function($table) {
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
@@ -27,8 +27,8 @@ class CreateTableCompanies extends Migration
         });
 
         Schema::table('projects', function($table) {
-            $table->integer('company_id')->unsigned();
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->integer('team_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 

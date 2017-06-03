@@ -1,7 +1,7 @@
-var CompanyResolver = function()
+var TeamResolver = function()
 {	
 
-	this.manager = new CompanyManager();
+	this.manager = new TeamManager();
 };
 
 /**
@@ -9,7 +9,7 @@ var CompanyResolver = function()
  *
  * @return void
  */
-CompanyResolver.prototype.template = function()
+TeamResolver.prototype.template = function()
 {
 
 	template.load('side-left');
@@ -17,26 +17,26 @@ CompanyResolver.prototype.template = function()
 }
 
 /**
- * Create a new company
+ * Create a new team
  *
  * @var {object} attributes
  *
  * @return void
  */
-CompanyResolver.prototype.create = function(vars)
+TeamResolver.prototype.create = function(vars)
 {
 
 	var self = this;
-	var company = Company.create(vars.attributes);
-	var tmp_id = company.uid;
-	App.get('user').companies.push(company);
+	var team = Team.create(vars.attributes);
+	var tmp_id = team.uid;
+	App.get('user').teams.push(team);
 
 	self.template();
 	self.manager.create({
 		params: vars.attributes,
-		success: function(company) {
+		success: function(team) {
 
-			App.get('user').getCompanyBy('uid', tmp_id).fill(company);
+			App.get('user').getTeamBy('uid', tmp_id).fill(team);
 			self.template();
 
 			$('.modal').modal('hide');
@@ -55,18 +55,18 @@ CompanyResolver.prototype.create = function(vars)
 };
 
 /**
- * Remove a company
+ * Remove a team
  *
  * @param {integer} id
  *
  * @return void
  */
-CompanyResolver.prototype.remove = function(id, vars)
+TeamResolver.prototype.remove = function(id, vars)
 {
 
 	var self = this;
 
-	App.get('user').removeCompanyBy('id', id);
+	App.get('user').removeTeamBy('id', id);
 	
 	self.template();
 
@@ -76,7 +76,7 @@ CompanyResolver.prototype.remove = function(id, vars)
 			success: function() {
 				self.template();
 
-				if (App.get('route').name == 'company' && App.get('route').data.id == id) {
+				if (App.get('route').name == 'team' && App.get('route').data.id == id) {
 					App.get('router').navigate('/');
 				}
 
@@ -95,19 +95,19 @@ CompanyResolver.prototype.remove = function(id, vars)
 };
 
 /**
- * Update a company
+ * Update a team
  *
  * @param {integer} id
  * @param {object} attributes
  *
  * @return void
  */
-CompanyResolver.prototype.update = function(id, attributes)
+TeamResolver.prototype.update = function(id, attributes)
 {
 
 	var self = this;
 
-	App.get('user').getCompanyById(id).fill(attributes);
+	App.get('user').getTeamById(id).fill(attributes);
 
 	self.template();
 
@@ -115,9 +115,9 @@ CompanyResolver.prototype.update = function(id, attributes)
 		id,
 		{
 			params: attributes,
-			success: function(company) {
+			success: function(team) {
 
-				App.get('user').getCompanyById(company.id).fill(company);
+				App.get('user').getTeamById(team.id).fill(team);
 				self.template();
 				
 				$('.modal').modal('hide');

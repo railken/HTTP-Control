@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Railken\Laravel\Manager\ModelContract;
 
 use Core\Project\Project;
-use Core\Company\Company;
+use Core\Team\Team;
 use Railken\Laravel\Manager\Permission\UserContract;
 
 class User extends Authenticatable implements ModelContract, UserContract
@@ -43,11 +43,11 @@ class User extends Authenticatable implements ModelContract, UserContract
     }
 
     /**
-     * Retrieve companies
+     * Retrieve teams
      */
-    public function companies()
+    public function teams()
     {
-        return $this->hasMany(Company::class);
+        return $this->hasMany(Team::class);
     }
 
     public function getIdentifier()

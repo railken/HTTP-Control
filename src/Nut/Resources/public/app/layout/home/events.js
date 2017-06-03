@@ -60,12 +60,12 @@ $('body').on('submit', '.projects-edit', function(e) {
 });
 
 
-$('body').on('submit', "[name='companies.create']", function(e) {
+$('body').on('submit', "[name='teams.create']", function(e) {
 	e.preventDefault();
 
 	var params = getParamsByForm($(this));
 
-	var resolver = new CompanyResolver();
+	var resolver = new TeamResolver();
 
 	resolver.create({
 		attributes: {	
@@ -81,11 +81,11 @@ $('body').on('submit', "[name='companies.create']", function(e) {
 });
 
 
-$('body').on('submit', "[name='companies.remove']", function(e) {
+$('body').on('submit', "[name='teams.remove']", function(e) {
 	e.preventDefault();
 	$('.modal').modal('hide');
 	var params = getParamsByForm($(this));
-	var resolver = new CompanyResolver();
+	var resolver = new TeamResolver();
 	resolver.remove(params.id, {});
 	
 });

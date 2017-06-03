@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::delete('/{ids}', ['uses' => 'ProjectsController@delete']);
         });
 
-        Route::group(['prefix' => 'companies'], function () {
+        Route::group(['prefix' => 'teams'], function () {
             Route::get('/', ['uses' => 'CompaniesController@index']);
             Route::post('/', ['uses' => 'CompaniesController@create']);
             Route::get('/{id}', ['uses' => 'CompaniesController@show']);

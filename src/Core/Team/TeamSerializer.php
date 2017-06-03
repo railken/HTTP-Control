@@ -1,11 +1,11 @@
 <?php
 
-namespace Core\Company;
+namespace Core\Team;
 
 use Railken\Laravel\Manager\ModelSerializer;
 use Railken\Laravel\Manager\ModelContract;
 
-class CompanySerializer extends ModelSerializer
+class TeamSerializer extends ModelSerializer
 {
 
 	/**

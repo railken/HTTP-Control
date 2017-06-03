@@ -1,4 +1,4 @@
-var CompanyManager = function(){
+var TeamManager = function(){
 
 
 
@@ -11,13 +11,13 @@ var CompanyManager = function(){
  *
  * @return void
  */
-CompanyManager.prototype.create = function(vars)
+TeamManager.prototype.create = function(vars)
 {
 
-	App.get('api').basicCall('POST', '/user/companies', {
+	App.get('api').basicCall('POST', '/user/teams', {
 		params: vars.params,
 		success: function(response) {
-			vars.success(new Company(response.data.resources));
+			vars.success(new Team(response.data.resources));
 		},
 		error: vars.error,
 	});
@@ -33,11 +33,11 @@ CompanyManager.prototype.create = function(vars)
  *
  * @return void
  */
-CompanyManager.prototype.get = function(id, vars)
+TeamManager.prototype.get = function(id, vars)
 {
-    App.get('api').basicCall('GET', '/user/companies/'+id , {
+    App.get('api').basicCall('GET', '/user/teams/'+id , {
         success: function(response) {
-            vars.success(new Company(response.data.resources));
+            vars.success(new Team(response.data.resources));
         },
         error: vars.error
     });
@@ -52,13 +52,13 @@ CompanyManager.prototype.get = function(id, vars)
  *
  * @return void
  */
-CompanyManager.prototype.update = function(id, vars)
+TeamManager.prototype.update = function(id, vars)
 {
 
-    App.get('api').basicCall('PUT', '/user/companies/'+id , {
+    App.get('api').basicCall('PUT', '/user/teams/'+id , {
         params: vars.params,
         success: function(response) {
-            vars.success(new Company(response.data.resources));
+            vars.success(new Team(response.data.resources));
         },
         error: vars.error,
     });
@@ -73,9 +73,9 @@ CompanyManager.prototype.update = function(id, vars)
  *
  * @return void
  */
-CompanyManager.prototype.delete = function(id, vars)
+TeamManager.prototype.delete = function(id, vars)
 {
-    App.get('api').basicCall('DELETE', '/user/companies/'+id , {
+    App.get('api').basicCall('DELETE', '/user/teams/'+id , {
         success: vars.success,
         error: vars.error
     });

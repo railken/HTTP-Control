@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Company;
+namespace Core\Team;
 
 use Illuminate\Database\Eloquent\Model;
 use Railken\Laravel\Manager\ModelContract;
@@ -9,7 +9,7 @@ use Railken\Laravel\Manager\Permission\ResourceContract;
 
 use Core\User\User;
 
-class Company extends Model implements ModelContract,  ResourceContract
+class Team extends Model implements ModelContract,  ResourceContract
 {
 	use SoftDeletes;
 
@@ -18,7 +18,7 @@ class Company extends Model implements ModelContract,  ResourceContract
 	 *
 	 * @var string
 	 */
-	protected $table = 'companies';
+	protected $table = 'teams';
 
 	/**
      * The attributes that should be mutated to dates.

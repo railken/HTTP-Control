@@ -6,7 +6,7 @@ use Core\User\User;
 use League\OAuth2\Server\CryptKey;
 
 use Core\Project\ProjectManager;
-use Core\Company\CompanyManager;
+use Core\Team\TeamManager;
 
 class UserSerializer
 {
@@ -17,7 +17,7 @@ class UserSerializer
             'username' => $user->username,
             'email' => $user->email,
             'projects' => $this->projects($user->projects),
-            'companies' => $this->companies($user->companies)
+            'teams' => $this->teams($user->teams)
         ];
     }
 
@@ -30,12 +30,12 @@ class UserSerializer
         });
     }
 
-    public function companies($projects)
+    public function teams($projects)
     {
-        $serializer = (new CompanyManager)->serializer;
+        $serializer = (new TeamManager)->serializer;
 
-        return $projects->map(function ($company) use ($serializer) {
-            return $serializer->serialize($company);
+        return $projects->map(function ($team) use ($serializer) {
+            return $serializer->serialize($team);
         });
 
     }

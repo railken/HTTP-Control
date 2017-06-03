@@ -7,8 +7,8 @@ var User = function(attributes)
 	});
 
 
-	attributes.companies = attributes.companies.map(function(company) {
-		return new Company(company);
+	attributes.teams = attributes.teams.map(function(team) {
+		return new Team(team);
 	});
 
 	this.fill(attributes);
@@ -63,11 +63,11 @@ User.prototype.removeProjectBy = function(name, value)
  * @param {string} name
  * @param {mixed} value
  *
- * @return {Company}
+ * @return {Team}
  */
-User.prototype.getCompanyBy = function(name, value)
+User.prototype.getTeamBy = function(name, value)
 {
-	return this.companies.getByAttribute(name, value);
+	return this.teams.getByAttribute(name, value);
 }
 
 /**
@@ -75,11 +75,11 @@ User.prototype.getCompanyBy = function(name, value)
  *
  * @param {integer} id
  *
- * @return {Company}
+ * @return {Team}
  */
-User.prototype.getCompanyById = function(id)
+User.prototype.getTeamById = function(id)
 {
-	return this.getCompanyBy('id', id);
+	return this.getTeamBy('id', id);
 };
 
 /**
@@ -90,7 +90,7 @@ User.prototype.getCompanyById = function(id)
  *
  * @return void
  */
-User.prototype.removeCompanyBy = function(name, value)
+User.prototype.removeTeamBy = function(name, value)
 {
-	return this.companies.removeByAttribute(name, value);
+	return this.teams.removeByAttribute(name, value);
 };

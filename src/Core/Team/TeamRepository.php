@@ -1,10 +1,10 @@
 <?php
 
-namespace Core\Company;
+namespace Core\Team;
 
 use Railken\Laravel\Manager\ModelRepository;
 
-class CompanyRepository extends ModelRepository
+class TeamRepository extends ModelRepository
 {
 
 	/**
@@ -12,6 +12,6 @@ class CompanyRepository extends ModelRepository
 	 *
 	 * @var string
 	 */
-	public $entity = Company::class;
+	public $entity = Team::class;
 
 }
