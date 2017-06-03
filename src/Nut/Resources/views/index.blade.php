@@ -77,7 +77,7 @@
                     <div>{name}</div>
                     <div class='text-sm'>0 requests</div>
                 </div>
-                <div class='fluid fluid-vcenter dropdown'>
+                <div class='fluid fluid-stretch dropdown'>
                     <div class='nav-project-actions fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-project-action">
                         <!--<div><i class='fa fa-users nav-project-action-icon'></i></div>-->
                         <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
