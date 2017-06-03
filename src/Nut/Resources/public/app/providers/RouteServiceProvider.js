@@ -47,7 +47,6 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 		.ready(function() {
 
 	    	$( ".side-left" ).resizable({
-	    	
 			});
 
 	    	$(".side-left").on('resize', function(e) {

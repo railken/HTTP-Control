@@ -23,7 +23,7 @@ header {
 
 .side-left {
 	width: 100%;
-	min-width: 200px;
+	min-width: 300px;
 	max-width: 600px;
 }
 
@@ -62,7 +62,6 @@ nav {
 }
 
 nav {
-
 	overflow-y: scroll;  
 }
 
@@ -128,6 +127,29 @@ nav .nav-project:not(:last-child){
 .nav-project-actions:hover {
 	background: rgba(0, 0, 0, 0.01);
 }
+
+.nav-companies {
+	background: #3d3d47;
+}
+
+.nav-company {
+	background: white;
+	border-radius: 5px;
+	margin: 10px;
+	width: 40px;
+	height: 40px;
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+.nav-company:hover {
+	opacity: 0.9;
+}
+
+.nav-company.active {
+	opacity: 1.0;
+}
+
 
 ::-webkit-scrollbar {
     width: 6px;

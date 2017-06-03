@@ -66,7 +66,8 @@ class ProjectManager extends ModelManager
             'company' => $entity->company
         ]);
 
-        $this->throwExceptionAccessDenied('projects.save', $entity);
+        $this->throwExceptionAccessDenied('company.show', $entity->company);
+        $this->throwExceptionAccessDenied('project.save', $entity);
 
         return parent::save($entity);
     }
