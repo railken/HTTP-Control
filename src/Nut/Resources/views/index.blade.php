@@ -111,7 +111,7 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-create">Create project</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-modal-team_id='input,{team.id}' data-target="#project-create">Create project</a>
                         <!--
                         <form method='POST' class='projects-delete'>
                             <input type='hidden' name='id' value='{id}'>

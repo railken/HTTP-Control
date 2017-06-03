@@ -16,7 +16,7 @@
                 <p>You can't go back.</p>
             </div>
             
-            <form method='POST' class="modal-footer projects-delete">
+            <form method='POST' class="modal-footer" name='projects.remove'>
                 <input type='hidden' name='id' value=''>
                 <button type="submit" class="btn btn-primary" >Yes, delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
@@ -38,12 +38,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method='POST' class="modal-footer" name='projects-create'>
+                <form method='POST' class="modal-footer" name='projects.create'>
 
                     <input type='text' class='form-control'  placeholder='Project name' name='name'>
                     <br>
                     <textarea class='form-control' placeholder='Project description' rows='10' name='description'></textarea>
                     <br>
+                    <input type='hidden' name='team_id'>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" >Create</button>
                     
@@ -66,7 +67,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method='POST' class="modal-footer projects-edit">
+                <form method='POST' class="modal-footer" name='projects.update'>
 
                     <input type='text' class='form-control' name='name' placeholder='Project name'>
                     <br>

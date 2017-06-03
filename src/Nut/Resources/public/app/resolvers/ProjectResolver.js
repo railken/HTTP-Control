@@ -12,7 +12,7 @@ var ProjectResolver = function()
 ProjectResolver.prototype.template = function()
 {
 
-	template.load('nav-projects');
+	template.load('side-left');
 	template.load('header');
 }
 
@@ -23,29 +23,35 @@ ProjectResolver.prototype.template = function()
  *
  * @return void
  */
-ProjectResolver.prototype.create = function(attributes)
+ProjectResolver.prototype.create = function(vars)
 {
 
 	var self = this;
-	var project = Project.create(attributes);
+	var project = Project.create(vars.attributes);
 	var tmp_id = project.uid;
-	App.get('user').projects.push(project);
+	App.get('team').projects.push(project);
 
 
 	self.template();
 
 	self.manager.create({
-		params: attributes,
+		params: vars.attributes,
 		success: function(project) {
 
-			App.get('user').getProjectBy('uid', tmp_id).fill(project);
+			App.get('team').getProjectBy('uid', tmp_id).fill(project);
 
 			self.template();
 
 			$('.modal').modal('hide');
+
+			if (vars.success)
+				vars.success();
 		},
 		error: function(response) {
 			App.get('flash').error(response.message);
+
+			if (vars.error)
+				vars.error();
 		},
 	})
 
@@ -58,12 +64,12 @@ ProjectResolver.prototype.create = function(attributes)
  *
  * @return void
  */
-ProjectResolver.prototype.remove = function(id)
+ProjectResolver.prototype.remove = function(id, vars)
 {
 
 	var self = this;
 
-	App.get('user').removeProjectBy('id', id);
+	App.get('team').removeProjectBy('id', id);
 	
 	self.template();
 
@@ -76,9 +82,15 @@ ProjectResolver.prototype.remove = function(id)
 				if (App.get('route').name == 'project' && App.get('route').data.id == id) {
 					App.get('router').navigate('/');
 				}
+
+				if (vars.success)
+					vars.success();
 			},
 			error: function(response) {
 				App.get('flash').error(response.message);
+
+				if (vars.error)
+					vars.error();
 			},
 		}
 	)
@@ -93,29 +105,35 @@ ProjectResolver.prototype.remove = function(id)
  *
  * @return void
  */
-ProjectResolver.prototype.update = function(id, attributes)
+ProjectResolver.prototype.update = function(id, vars)
 {
 
 	var self = this;
 
-	App.get('user').getProjectById(id).fill(attributes);
+	App.get('team').getProjectById(id).fill(vars.attributes);
 
 	self.template();
 
 	self.manager.update(
 		id,
 		{
-			params: attributes,
+			params: vars.attributes,
 			success: function(project) {
 
-				App.get('user').getProjectById(project.id).fill(project);
+				App.get('team').getProjectById(project.id).fill(project);
 				self.template();
 				
 				$('.modal').modal('hide');
+
+				if (vars.success)
+					vars.success();
 			},
 			error: function(response) {
 				App.get('flash').error(response.message);
 				self.template();
+
+				if (vars.error)
+					vars.error();
 			},
 		}
 	)

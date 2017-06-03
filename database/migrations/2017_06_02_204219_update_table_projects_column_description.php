@@ -14,7 +14,7 @@ class UpdateTableProjectsColumnDescription extends Migration
     public function up()
     {
         Schema::table('projects', function($table) {
-            $table->text('description');
+            $table->text('description')->nullable();
         });
     }
 
