@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableProjects extends Migration
+class CreateTableCompanies extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,22 @@ class CreateTableProjects extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function($table) {
-            $table->increments('id')->primaryKey();
+        Schema::create('companies', function($table) {
+            $table->increments('id');
             $table->string('name');
+            $table->text('description');
+            $table->softDeletes();
+
+
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
-            
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->timestamps();
+        });
+
+        Schema::table('projects', function($table) {
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

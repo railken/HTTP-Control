@@ -48,7 +48,6 @@ class Handler extends ExceptionHandler
 
             if ($exception instanceof HttpException && $exception->getStatusCode() == 401) {
 
-                echo "aaa";
                 return response()->json([
                     'status' => 'error',
                     'code' => $exception->getStatusCode(),

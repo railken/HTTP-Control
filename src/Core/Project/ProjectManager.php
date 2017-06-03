@@ -8,6 +8,7 @@ use Railken\Laravel\Manager\ModelManager;
 use Core\Project\Project;
 
 use Core\User\UserManager;
+use Core\Company\CompanyManager;
 
 class ProjectManager extends ModelManager
 {
@@ -32,10 +33,14 @@ class ProjectManager extends ModelManager
      */
     public function fill(ModelContract $entity, array $params)
     {
-        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id']);
+        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id', 'company', 'company_id']);
 
         if (isset($params['user']) || isset($params['user_id'])) {
             $this->vars['user'] = $this->fillManyToOneById($entity, new UserManager(), $params, 'user');
+        }
+
+        if (isset($params['company']) || isset($params['company_id'])) {
+            $this->vars['company'] = $this->fillManyToOneById($entity, new CompanyManager(), $params, 'company');
         }
 
         $entity->fill($params);
@@ -53,11 +58,15 @@ class ProjectManager extends ModelManager
     public function save(ModelContract $entity)
     {
         $entity->user()->associate($this->vars->get('user', $entity->user));
+        $entity->company()->associate($this->vars->get('company', $entity->company));
 
         $this->throwExceptionParamsNull([
             'name' => $entity->name,
+            'user' => $entity->user,
+            'company' => $entity->company
         ]);
 
+        $this->throwExceptionAccessDenied('projects.save', $entity);
 
         return parent::save($entity);
     }

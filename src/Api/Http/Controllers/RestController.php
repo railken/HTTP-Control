@@ -42,6 +42,7 @@ abstract class RestController extends Controller
      */
     public function index(Request $request)
     {
+        $this->initialize($request);
         $manager = $this->getManager();
 
         $query = $manager->getRepository()->getQuery();
@@ -94,6 +95,7 @@ abstract class RestController extends Controller
      */
     public function create(Request $request)
     {
+        $this->initialize($request);
         $manager = $this->getManager();
 
         $parameters = $request->all();
@@ -114,17 +116,13 @@ abstract class RestController extends Controller
     */
     public function show($id, Request $request)
     {
+        $this->initialize($request);
         $manager = $this->getManager();
 
         $entity = $manager->find($id);
 
-
         if (empty($entity)) {
             abort(404);
-        }
-
-        if ($this->getUser() && $this->getUser()->id != $entity->user->id) {
-            abort(501);
         }
 
         return $this->success([
@@ -143,6 +141,7 @@ abstract class RestController extends Controller
      */
     public function update($id, Request $request)
     {
+        $this->initialize($request);
         $manager = $this->getManager();
 
         $entity = $manager->find($id);
@@ -151,10 +150,6 @@ abstract class RestController extends Controller
             abort(404);
         }
 
-        if ($this->getUser() && ($this->getUser()->id != $entity->user->id)) {
-            abort(501);
-        }
-        
 
         $manager->update($entity, $request->all());
 
@@ -173,16 +168,13 @@ abstract class RestController extends Controller
     */
     public function delete($id, Request $request)
     {
+        $this->initialize($request);
         $manager = $this->getManager();
 
         $entity = $manager->find($id);
 
         if (empty($entity)) {
             abort(404);
-        }
-
-        if ($this->getUser() && ($this->getUser()->id != $entity->user->id)) {
-            abort(501);
         }
 
         $manager->delete($entity);

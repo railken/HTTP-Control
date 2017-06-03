@@ -5,7 +5,6 @@ namespace Api\Http\Controllers\User;
 use Api\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Core\User\UserManager;
-use Core\User\UserSerializer;
 
 class ProfileController extends Controller
 {
@@ -28,6 +27,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->success(['data' => ['resource' => $this->manager->serializer->serialize(\Auth::user())]]);
+        $this->initialize($request);
+        return $this->success(['data' => ['resource' => $this->manager->serializer->serialize($this->getUser())]]);
     }
 }

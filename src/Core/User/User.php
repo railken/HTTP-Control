@@ -9,8 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Railken\Laravel\Manager\ModelContract;
 
 use Core\Project\Project;
+use Railken\Laravel\Manager\Permission\UserContract;
 
-class User extends Authenticatable implements ModelContract
+class User extends Authenticatable implements ModelContract, UserContract
 {
     use HasApiTokens, Notifiable;
 
@@ -40,5 +41,18 @@ class User extends Authenticatable implements ModelContract
         return $this->hasMany(Project::class);
     }
 
+    public function getRole()
+    {
 
+    }
+
+    public function getIdentifier()
+    {
+
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }

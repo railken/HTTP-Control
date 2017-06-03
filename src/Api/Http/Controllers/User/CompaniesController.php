@@ -4,17 +4,17 @@ namespace Api\Http\Controllers\User;
 
 use Api\Http\Controllers\RestController as Controller;
 use Railken\Laravel\Manager\ModelContract;
-use Core\Project\ProjectManager;
+use Core\Company\CompanyManager;
 
-class ProjectsController extends Controller
+class CompaniesController extends Controller
 {
 
     /**
      * Construct
      *
-     * @param ProjectManager $manager
+     * @param CompanyManager $manager
      */
-    public function __construct(ProjectManager $manager)
+    public function __construct(CompanyManager $manager)
     {
         $this->manager = $manager;
     }

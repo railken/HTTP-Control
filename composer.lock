@@ -1272,16 +1272,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v2.0.7",
+            "version": "v2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "f047e3afc07a97054a42c5a84096521fbe947140"
+                "reference": "cd908e73505f7d3aad101d3177280db952ffc190"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/f047e3afc07a97054a42c5a84096521fbe947140",
-                "reference": "f047e3afc07a97054a42c5a84096521fbe947140",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/cd908e73505f7d3aad101d3177280db952ffc190",
+                "reference": "cd908e73505f7d3aad101d3177280db952ffc190",
                 "shasum": ""
             },
             "require": {
@@ -1332,7 +1332,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2017-06-01T20:11:56+00:00"
+            "time": "2017-06-02T21:51:18+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2376,7 +2376,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-05-23T16:41:23+00:00"
+            "time": "2017-05-23 16:41:23"
         },
         {
             "name": "ramsey/uuid",

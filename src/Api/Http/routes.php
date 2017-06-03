@@ -29,6 +29,14 @@ Route::group(['middleware' => 'auth:api'], function () {
             Route::put('/{id}', ['uses' => 'ProjectsController@update']);
             Route::delete('/{ids}', ['uses' => 'ProjectsController@delete']);
         });
+
+        Route::group(['prefix' => 'companies'], function () {
+            Route::get('/', ['uses' => 'CompaniesController@index']);
+            Route::post('/', ['uses' => 'CompaniesController@create']);
+            Route::get('/{id}', ['uses' => 'CompaniesController@show']);
+            Route::put('/{id}', ['uses' => 'CompaniesController@update']);
+            Route::delete('/{ids}', ['uses' => 'CompaniesController@delete']);
+        });
     });
 
 
