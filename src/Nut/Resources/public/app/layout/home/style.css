@@ -101,6 +101,17 @@ nav .nav-project:not(:last-child){
 	font-size: 24px;
 }
 
+.nav-project-action-icon-a {
+	opacity: 0.5;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.nav-project-action-icon-a:hover {
+	color: #505061;
+	opacity: 1.0;
+}
+
 .nav-project-actions {
 	padding: 10px 20px;
 	border-left: 1px solid #efefef;

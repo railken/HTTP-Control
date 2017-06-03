@@ -50,6 +50,12 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 	    	
 			});
 
+	    	$(".side-left").on('resize', function(e) {
+	    		App.get('side-left-width').set($(this).width());
+	    	});
+
+	    	$(".side-left").css('width', App.get('side-left-width').get());
+
 			toggle.reload();
 		})
 		.parent(main);

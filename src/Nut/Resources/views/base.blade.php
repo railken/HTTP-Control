@@ -4,8 +4,9 @@
 
 <section class='full-height container-left-side'>
     <div class='side-left'>
-        <div class='container-left-side-top'>
-            <button class='btn btn-primary' data-toggle="modal" data-target="#project-create">new project</button>
+        <div class='container-left-side-top fluid fluid-vcenter'>
+            <div class='fill'></div>
+            <i class='fa fa-plus nav-project-action-icon-a' data-toggle="modal" data-target="#project-create"></i>
         </div>
         <nav class='full-height nav-projects'>
 

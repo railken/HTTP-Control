@@ -26,6 +26,8 @@ $(document).ready(function(){
     App.get('api').setUrl(config('api_url'));
     App.set('flash', new Flash());
 
+    App.set('side-left-width', new CookieStorage("side-left-width"));
+
     App.init();
 
 
