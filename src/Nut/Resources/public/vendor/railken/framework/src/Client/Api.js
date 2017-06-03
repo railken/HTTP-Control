@@ -13,6 +13,8 @@ var Api = function(){
 	 * @var {string}}
 	 */
 	this.url = null;
+
+	this.calling = true;
 };
 
 /**
@@ -124,11 +126,13 @@ Api.prototype.callFirst = function()
 
 		call.call();
 
+		this.calling = true;
 		$('body').attr('loading', 1);
 		return true;
 
 	}
 
+	this.calling = false;
 	$('body').attr('loading', 0);
 	return false;
 };

@@ -89,7 +89,7 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 		.source('header')
 		.vars(function() {
 			return {
-				user: App.get('user'), syncing: App.get('syncing')
+				user: App.get('user'), syncing: App.get('api').calling
 			};
 		})
 		.container(function() {
