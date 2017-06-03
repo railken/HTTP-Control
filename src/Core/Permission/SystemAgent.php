@@ -3,11 +3,16 @@
 namespace Core\Permission;
 
 use Railken\Laravel\Manager\Permission\Agent;
-use Railken\Laravel\Manager\ModelContract;
+use Railken\Laravel\Manager\Permission\ResourceContract;
 
 class SystemAgent extends Agent
 {
 
+	/**
+	 * List of all permissions.
+	 *
+	 * @var array
+	 */
 	protected $permissions = [
 		'*'
 	];
@@ -20,9 +25,7 @@ class SystemAgent extends Agent
 	 *
 	 * @return boolean
 	 */
-	public function can($permission, ModelContract $resource) {
-
-	
+	public function can($permission, ResourceContract $resource) {
 
 		return parent::can($permission, $resource);
 	}

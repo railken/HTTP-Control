@@ -5,10 +5,11 @@ namespace Core\Company;
 use Illuminate\Database\Eloquent\Model;
 use Railken\Laravel\Manager\ModelContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Railken\Laravel\Manager\Permission\ResourceContract;
 
 use Core\User\User;
 
-class Company extends Model implements ModelContract
+class Company extends Model implements ModelContract,  ResourceContract
 {
 	use SoftDeletes;
 
@@ -41,6 +42,11 @@ class Company extends Model implements ModelContract
         return $this->belongsTo(User::class);
     }
     
+    /**
+     * Retrieve the user
+     *
+     * @return User
+     */
     public function getUser()
     {
         return $this->user;
