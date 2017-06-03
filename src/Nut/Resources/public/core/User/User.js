@@ -6,6 +6,11 @@ var User = function(attributes)
 		return new Project(project);
 	});
 
+
+	attributes.companies = attributes.companies.map(function(company) {
+		return new Company(company);
+	});
+
 	this.fill(attributes);
 
 };
@@ -50,4 +55,42 @@ User.prototype.getProjectById = function(id)
 User.prototype.removeProjectBy = function(name, value)
 {
 	return this.projects.removeByAttribute(name, value);
+};
+
+/**
+ * Find a project by attribute and value
+ *
+ * @param {string} name
+ * @param {mixed} value
+ *
+ * @return {Company}
+ */
+User.prototype.getCompanyBy = function(name, value)
+{
+	return this.companies.getByAttribute(name, value);
+}
+
+/**
+ * Get project by id
+ *
+ * @param {integer} id
+ *
+ * @return {Company}
+ */
+User.prototype.getCompanyById = function(id)
+{
+	return this.getCompanyBy('id', id);
+};
+
+/**
+ * Remove a project by attribute and value
+ *
+ * @param {string} name
+ * @param {mixed} value
+ *
+ * @return void
+ */
+User.prototype.removeCompanyBy = function(name, value)
+{
+	return this.companies.removeByAttribute(name, value);
 };

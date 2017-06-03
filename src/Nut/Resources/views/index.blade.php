@@ -69,7 +69,61 @@
             {user.username}
         </div>
     </template>
+
+    <template data-name='side-left'>
+        <div class='side-left'>
+
+            <div class='full-height fluid'>
+                <nav class='full-height nav-companies'>
+                    {#user.companies}
+                        <div class='nav-company' data-name='{name}'>
+
+                        </div>
+                    {/user.companies}
+
+                    <div class='nav-company'  data-toggle="modal" data-target="#company-create">
+                        <i class='fa fa-plus'></i>
+                    </div>
+                </nav>
+                <div class='fill'>
+
+                    <div class='container-left-side-top fluid fluid-vcenter'>
+                        <div>Team name</div>
+
+                        <div class='fill'></div>
+
+                        <div class='fluid fluid-stretch dropdown'>
+                            <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-company-actions">
+                         
+                                <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="nav-company-actions">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#company-edit" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit company</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#company-delete" data-modal-id="input,{id}">Delete company</a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-create">Create project</a>
+                                <!--
+                                <form method='POST' class='projects-delete'>
+                                    <input type='hidden' name='id' value='{id}'>
+                                    <button class="dropdown-item" type='submit'>Leave project</button>
+                                </form>-->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <nav class='full-height nav-projects fill'>
+
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </template>
     <template data-name='nav-projects'>
+
 
         {#user.projects}
             <div class='nav-project fluid fluid-stretch dropdown'>
@@ -144,12 +198,15 @@
     <script src="{{ assets('Nut::core/User/User.js') }}"></script>
     <script src="{{ assets('Nut::core/Project/ProjectManager.js') }}"></script>
     <script src="{{ assets('Nut::core/Project/Project.js') }}"></script>
+    <script src="{{ assets('Nut::core/Company/CompanyManager.js') }}"></script>
+    <script src="{{ assets('Nut::core/Company/Company.js') }}"></script>
     <!-- app -->
     <script src="{{ assets('Nut::app/providers/RouteServiceProvider.js') }}"></script>
     <script src="{{ assets('Nut::app/providers/AuthServiceProvider.js') }}"></script>
 
 
     <script src="{{ assets('Nut::app/resolvers/ProjectResolver.js') }}"></script>
+    <script src="{{ assets('Nut::app/resolvers/CompanyResolver.js') }}"></script>
     <script src="{{ assets('Nut::app/layout/sign-in/auth.js') }}"></script>
     <script src="{{ assets('Nut::app/layout/sign-in/events.js') }}"></script>
     <!--<script src="{{ assets('Nut::app/layout/sign-in/main.js') }}"></script>-->

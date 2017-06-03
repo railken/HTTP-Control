@@ -198,7 +198,12 @@ TemplatePart.prototype.load = function()
 	var templates = [this];
 
 	for (i in this.children) {
-		templates.push(this.children[i]);
+		var f = this.children[i];
+		
+		var a = f.load();
+
+		for (x in a)
+			templates.push(a[x]);
 	}
 	return templates;
 

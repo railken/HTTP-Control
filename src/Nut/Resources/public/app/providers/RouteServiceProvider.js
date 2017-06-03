@@ -32,6 +32,34 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 			return $('main'); 
 		});
 
+
+	var side_left = template
+		.define('side-left')
+		.source('side-left')
+		.vars(function() {
+			return {
+				user: App.get('user')
+			};
+		})
+		.container(function() {
+			return $('.container-left-side');
+		})
+		.ready(function() {
+
+	    	$( ".side-left" ).resizable({
+	    		
+			});
+
+	    	$(".side-left").on('resize', function(e) {
+	    		App.get('side-left-width').set($(this).width());
+	    	});
+
+	    	$(".side-left").css('width', App.get('side-left-width').get());
+
+			toggle.reload();
+		})
+		.parent(main);
+	
 	/** List projects **/
 	template
 		.define('nav-projects')
@@ -46,18 +74,9 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 		})
 		.ready(function() {
 
-	    	$( ".side-left" ).resizable({
-			});
-
-	    	$(".side-left").on('resize', function(e) {
-	    		App.get('side-left-width').set($(this).width());
-	    	});
-
-	    	$(".side-left").css('width', App.get('side-left-width').get());
-
 			toggle.reload();
 		})
-		.parent(main);
+		.parent(side_left);
 
 	/** Header **/
 	template

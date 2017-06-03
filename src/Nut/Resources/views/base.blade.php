@@ -1,34 +1,6 @@
-<header class='fluid'>
+<header class='fluid'></header>
 
-</header>
-
-<section class='full-height container-left-side'>
-    <div class='side-left'>
-
-        <div class='full-height fluid'>
-            <nav class='full-height nav-companies'>
-                {#user.companies}
-                    <div class='nav-company' data-name='{name}'>
-                    </div>
-                {/user.companies}
-            </nav>
-            <div class='fill'>
-
-                <div class='container-left-side-top fluid fluid-vcenter'>
-                    <div class='fill'></div>
-                    <i class='fa fa-pencil nav-project-action-icon-a' data-toggle="modal" data-target="#company-listing"></i>
-                    <i class='fa fa-plus nav-project-action-icon-a' data-toggle="modal" data-target="#project-create"></i>
-                </div>
-
-                <nav class='full-height nav-projects fill'>
-
-
-                </nav>
-            </div>
-        </div>
-    </div>
-
-</section>
+<section class='full-height container-left-side'></section>
 
 <div class="modal fade modal-small" id='project-delete'>
     <div class="modal-dialog" role="document">
@@ -111,30 +83,54 @@
     </div>
 </div>
 
-<div class="modal fade modal-small" id='company-listing'>
+<div class="modal fade modal-small" id='company-create'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header fluid">
-                <h5 class="modal-title">Editing companies</h5>
+                <h5 class="modal-title">Creating a company</h5>
                 <div class='fill'></div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method='POST' class="modal-footer projects-edit">
+                <form method='POST' class="modal-footer" name="companies.create">
 
-                    <input type='text' class='form-control' name='name' placeholder='Project name'>
+                    <input type='text' class='form-control' name='name' placeholder='Company name'>
                     <br>
-                    <textarea class='form-control' placeholder='Project description' rows='10' name='description'></textarea>
+                    <textarea class='form-control' placeholder='Company description' rows='10' name='description'></textarea>
                     <br>
                     <input type='hidden' name='id' value=''>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                    <button type="submit" class="btn btn-primary" >Create</button>
                     
                 </form>
             </div>
             
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-small" id='project-delete'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header fluid">
+                <h5 class="modal-title">Are you sure?</h5>
+                <div class='fill'></div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You can't go back.</p>
+            </div>
+            
+            <form method='POST' class="modal-footer" name='companies.remove'>
+                <input type='hidden' name='id' value=''>
+                <button type="submit" class="btn btn-primary" >Yes, delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+                
+            </form>
         </div>
     </div>
 </div>

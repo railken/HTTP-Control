@@ -1,18 +1,31 @@
-$('body').on('submit', "[name='projects-create']", function(e) {
-	e.preventDefault();
+function getParamsByForm(form)
+{
+	var params = {};
 
-	var input_name = $(this).find("[name='name']");
-	var input_description = $(this).find("[name='description']");
-
-
-	var resolver = new ProjectResolver();
-	resolver.create({
-		name: input_name.val(),
-		description: input_description.val()
+	$.map(form.find("[name]"), function(element) {
+		params[$(element).attr('name')] = $(element).val();
 	});
 
-	input_name.val('');
-	input_description.val('');
+	return params;
+}
+
+$('body').on('submit', "[name='projects-create']", function(e) {
+		e.preventDefault();
+
+	var params = getParamsByForm($(this));
+
+	var resolver = new ProjectResolver();
+
+	resolver.create({
+		params: {	
+			name: params.name,
+			description: params.description
+		},
+		success: function()
+		{
+			$(this).find("[name]").val();
+		}
+	});
 });
 
 $('body').on('submit', '.projects-delete', function(e) {
@@ -44,4 +57,35 @@ $('body').on('submit', '.projects-edit', function(e) {
 	input_name.val('');
 	input_description.val('');
 
+});
+
+
+$('body').on('submit', "[name='companies.create']", function(e) {
+	e.preventDefault();
+
+	var params = getParamsByForm($(this));
+
+	var resolver = new CompanyResolver();
+
+	resolver.create({
+		attributes: {	
+			name: params.name,
+			description: params.description
+		},
+		success: function()
+		{
+			$(this).find("[name]").val();
+		}
+	});
+
+});
+
+
+$('body').on('submit', "[name='companies.remove']", function(e) {
+	e.preventDefault();
+	$('.modal').modal('hide');
+	var params = getParamsByForm($(this));
+	var resolver = new CompanyResolver();
+	resolver.remove(params.id, {});
+	
 });
