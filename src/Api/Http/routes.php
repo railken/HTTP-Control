@@ -31,11 +31,11 @@ Route::group(['middleware' => 'auth:api'], function () {
         });
 
         Route::group(['prefix' => 'teams'], function () {
-            Route::get('/', ['uses' => 'CompaniesController@index']);
-            Route::post('/', ['uses' => 'CompaniesController@create']);
-            Route::get('/{id}', ['uses' => 'CompaniesController@show']);
-            Route::put('/{id}', ['uses' => 'CompaniesController@update']);
-            Route::delete('/{ids}', ['uses' => 'CompaniesController@delete']);
+            Route::get('/', ['uses' => 'TeamsController@index']);
+            Route::post('/', ['uses' => 'TeamsController@create']);
+            Route::get('/{id}', ['uses' => 'TeamsController@show']);
+            Route::put('/{id}', ['uses' => 'TeamsController@update']);
+            Route::delete('/{ids}', ['uses' => 'TeamsController@delete']);
         });
     });
 

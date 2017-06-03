@@ -76,7 +76,7 @@
             <div class='full-height fluid'>
                 <nav class='full-height nav-teams'>
                     {#user.teams}
-                        <div class='nav-team' data-name='{name}'>
+                        <div class='nav-team' data-id='{id}' data-name='{name}' data-navigo="" href="/team/{id}">
 
                         </div>
                     {/user.teams}
@@ -85,65 +85,33 @@
                         <i class='fa fa-plus'></i>
                     </div>
                 </nav>
-                <div class='fill'>
+                <div class='fill {#team}side-left-resizable{/team}' data-container='left-side-team'>
 
-                    <div class='container-left-side-top fluid fluid-vcenter'>
-                        <div>Team name</div>
-
-                        <div class='fill'></div>
-
-                        <div class='fluid fluid-stretch dropdown'>
-                            <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
-                         
-                                <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
-                            </div>
-                            <div class="dropdown-menu" aria-labelledby="nav-team-actions">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-edit" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit team</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-delete" data-modal-id="input,{id}">Delete team</a>
-
-                                <div class="dropdown-divider"></div>
-
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-create">Create project</a>
-                                <!--
-                                <form method='POST' class='projects-delete'>
-                                    <input type='hidden' name='id' value='{id}'>
-                                    <button class="dropdown-item" type='submit'>Leave project</button>
-                                </form>-->
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <nav class='full-height nav-projects fill'>
-
-
-                    </nav>
+                  
                 </div>
             </div>
         </div>
     </template>
-    <template data-name='nav-projects'>
+    <template data-name='left-side-team'>
 
+        {#team}
+          <div class='container-left-side-top fluid fluid-vcenter'>
+                <div class='team-name'>{name}</div>
 
-        {#user.projects}
-            <div class='nav-project fluid fluid-stretch dropdown'>
-                <div class='nav-project-icon nav-project-spacing'>
-                    <i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>
-                </div>
-                <div class='nav-project-info nav-project-spacing fill'>
-                    <div>{name}</div>
-                    <div class='text-sm'>0 requests</div>
-                </div>
+                <div class='fill'></div>
+
                 <div class='fluid fluid-stretch dropdown'>
-                    <div class='nav-project-actions fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-project-action">
-                        <!--<div><i class='fa fa-users nav-project-action-icon'></i></div>-->
+                    <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
+                 
                         <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
                     </div>
-                    <div class="dropdown-menu" aria-labelledby="nav-project-actions">
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-form" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit project</a>
+                    <div class="dropdown-menu" aria-labelledby="nav-team-actions">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit team</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-delete" data-modal-id="input,{id}">Delete team</a>
+
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-delete" data-modal-id="input,{id}">Delete project</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-create">Create project</a>
                         <!--
                         <form method='POST' class='projects-delete'>
                             <input type='hidden' name='id' value='{id}'>
@@ -152,11 +120,43 @@
                     </div>
                 </div>
 
-               
             </div>
-        {/user.projects}
-        <br><br><br><br><br><br>
 
+            <nav class='full-height nav-projects fill'>
+
+
+                {#team.projects}
+                    <div class='nav-project fluid fluid-stretch dropdown'>
+                        <div class='nav-project-icon nav-project-spacing'>
+                            <i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>
+                        </div>
+                        <div class='nav-project-info nav-project-spacing fill'>
+                            <div class='project-name'>{name}</div>
+                            <div class='text-sm'>0 requests</div>
+                        </div>
+                        <div class='fluid fluid-stretch dropdown'>
+                            <div class='nav-project-actions fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-project-action">
+                                <!--<div><i class='fa fa-users nav-project-action-icon'></i></div>-->
+                                <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="nav-project-actions">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-form" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit project</a>
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-delete" data-modal-id="input,{id}">Delete project</a>
+                                <!--
+                                <form method='POST' class='projects-delete'>
+                                    <input type='hidden' name='id' value='{id}'>
+                                    <button class="dropdown-item" type='submit'>Leave project</button>
+                                </form>-->
+                            </div>
+                        </div>
+                    </div>
+                {/team.projects}
+            </nav>
+
+        <br><br><br><br><br><br>
+        {/team}
     </template>
     <template data-name='layout'>@include('Nut::base')</template>
     <template data-name='sign-in'>@include('Nut::sign-in')</template>

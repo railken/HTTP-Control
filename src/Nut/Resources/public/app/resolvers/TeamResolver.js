@@ -70,18 +70,25 @@ TeamResolver.prototype.remove = function(id, vars)
 	
 	self.template();
 
+
 	self.manager.delete(
 		id,
 		{
 			success: function() {
-				self.template();
 
 				if (App.get('route').name == 'team' && App.get('route').data.id == id) {
+
+
+					App.set('team', null);
+					self.template();
 					App.get('router').navigate('/');
 				}
 
 				if (vars.success)
 					vars.success();
+
+
+				self.template();
 			},
 			error: function(response) {
 				App.get('flash').error(response.message);
@@ -102,29 +109,35 @@ TeamResolver.prototype.remove = function(id, vars)
  *
  * @return void
  */
-TeamResolver.prototype.update = function(id, attributes)
+TeamResolver.prototype.update = function(id, vars)
 {
 
 	var self = this;
 
-	App.get('user').getTeamById(id).fill(attributes);
+	App.get('user').getTeamById(id).fill(vars.attributes);
 
 	self.template();
 
 	self.manager.update(
 		id,
 		{
-			params: attributes,
+			params: vars.attributes,
 			success: function(team) {
 
 				App.get('user').getTeamById(team.id).fill(team);
 				self.template();
 				
 				$('.modal').modal('hide');
+
+				if (vars.success)
+					vars.success();
 			},
 			error: function(response) {
 				App.get('flash').error(response.message);
 				self.template();
+
+				if (vars.error)
+					vars.error();
 			},
 		}
 	)

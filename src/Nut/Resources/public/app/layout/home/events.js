@@ -74,18 +74,41 @@ $('body').on('submit', "[name='teams.create']", function(e) {
 		},
 		success: function()
 		{
-			$(this).find("[name]").val();
+			$(this).find("[name]").val('');
 		}
 	});
 
 });
 
+$('body').on('submit', "[name='teams.update']", function(e) {
+	e.preventDefault();
+
+	var params = getParamsByForm($(this));
+
+	var resolver = new TeamResolver();
+
+	
+	resolver.update(params.id, {
+		attributes: {	
+			name: params.name,
+			description: params.description
+		},
+		success: function()
+		{
+			$(this).find("[name]").val('');
+		}
+	});
+
+});
 
 $('body').on('submit', "[name='teams.remove']", function(e) {
 	e.preventDefault();
 	$('.modal').modal('hide');
 	var params = getParamsByForm($(this));
 	var resolver = new TeamResolver();
-	resolver.remove(params.id, {});
+
+	setTimeout(function() {
+		resolver.remove(params.id, {});
+	}, 100);
 	
 });

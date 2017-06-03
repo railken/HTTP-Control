@@ -64,6 +64,16 @@ var AuthenticatedServiceProvider = function() {
         next();
     };
 };
+
+
+
+$('body').on("click", "[data-navigo]", function(e) {
+    e.preventDefault();
+    $('[data-navigo].selected').removeClass('selected');
+    $(this).addClass('selected');
+    App.get('router').navigate($(this).attr('href'));
+});
+
 App.addProviders([
     AuthServiceProvider,
     RouteServiceProvider,

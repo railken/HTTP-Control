@@ -6,7 +6,7 @@ use Api\Http\Controllers\RestController as Controller;
 use Railken\Laravel\Manager\ModelContract;
 use Core\Team\TeamManager;
 
-class CompaniesController extends Controller
+class TeamsController extends Controller
 {
 
     /**

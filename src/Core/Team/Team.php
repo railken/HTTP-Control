@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Laravel\Manager\Permission\ResourceContract;
 
 use Core\User\User;
+use Core\Project\Project;
 
 class Team extends Model implements ModelContract,  ResourceContract
 {
@@ -42,6 +43,14 @@ class Team extends Model implements ModelContract,  ResourceContract
         return $this->belongsTo(User::class);
     }
     
+    /**
+     * Retrieve projects
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
     /**
      * Retrieve the user
      *

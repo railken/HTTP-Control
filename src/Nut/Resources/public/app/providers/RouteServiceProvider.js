@@ -38,7 +38,8 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 		.source('side-left')
 		.vars(function() {
 			return {
-				user: App.get('user')
+				user: App.get('user'),
+				team: App.get('team')
 			};
 		})
 		.container(function() {
@@ -46,33 +47,37 @@ RouteServiceProvider.prototype.getTemplateMain = function()
 		})
 		.ready(function() {
 
-	    	$( ".side-left" ).resizable({
-	    		
-			});
-
-	    	$(".side-left").on('resize', function(e) {
-	    		App.get('side-left-width').set($(this).width());
-	    	});
-
-	    	$(".side-left").css('width', App.get('side-left-width').get());
-
 			toggle.reload();
 		})
 		.parent(main);
 	
 	/** List projects **/
 	template
-		.define('nav-projects')
-		.source('nav-projects')
+		.define('left-side-team')
+		.source('left-side-team')
 		.vars(function() {
 			return {
-				user: App.get('user')
+				user: App.get('user'),
+				team: App.get('team')
 			};
 		})
 		.container(function() {
-			return $('.nav-projects');
+			return $("[data-container='left-side-team']");
 		})
 		.ready(function() {
+
+	    	$( ".side-left-resizable" ).resizable({
+	    		
+			});
+
+	    	$(".side-left-resizable").on('resize', function(e) {
+	    		App.get('side-left-width').set($(this).width());
+	    	});
+
+	    	$(".side-left-resizable").css('width', App.get('side-left-width').get());
+
+	    	if (App.get('team'))
+	    		$(".nav-teams .nav-team[data-id='"+App.get('team').id+"']").addClass('active');
 
 			toggle.reload();
 		})
@@ -155,7 +160,7 @@ RouteServiceProvider.prototype.initialize = function(self, next)
 		|--------------------------------------------------------------------------
 		|
 		*/
-		.on('projects/:id', function (params) {
+		.on('team/:id/projects/:id', function (params) {
 
 			var main = self.getTemplateMain();
 			var project = App.get('user').getProjectById(params.id);
@@ -190,6 +195,54 @@ RouteServiceProvider.prototype.initialize = function(self, next)
 			App.set('route', {name: 'project', data: project});
 			App.fireEvent('loaded');
 		})
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Team
+		|--------------------------------------------------------------------------
+		|
+		*/
+		.on('team/:id', function (params) {
+
+			var main = self.getTemplateMain();
+			var team = App.get('user').getTeamById(params.id);
+
+
+			if (!team) {
+				App.get('flash').error('Team not found'); 
+				App.get('router').navigate("/");
+				return;
+			}
+
+
+			App.set('team', team);
+
+			template
+				.define('content')
+				.source('team')
+				.vars(function() {
+
+					return {
+						team: App.get('team'), 
+						user: App.get('user')
+					};
+				})
+				.container(function() {
+					return $('.team');
+				})
+				.ready(function() {
+					toggle.reload();
+					$("[data-popover]").popover();
+				})
+				.parent(main);
+
+
+			template.load('main');
+			App.set('route', {name: 'team', data: team});
+			App.fireEvent('loaded');
+		})
+
 
 		/*
 		|--------------------------------------------------------------------------

@@ -62,6 +62,11 @@ main {
 .link:hover {
 	text-decoration: underline;
 }
+
+.width-inherit {
+    width: inherit;
+}
+
 .fluid-cleft {
 	justify-content: flex-start;
 	text-align: left;
