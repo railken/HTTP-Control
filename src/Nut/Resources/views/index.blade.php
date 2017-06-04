@@ -79,12 +79,12 @@
                     {#user.teams}
                         <div class='nav-team' data-id='{id}' data-name='{name}' data-navigo="" href="/team/{id}">
                             {#avatar}
-                                <img src='{avatar}' width='40' height='40'>
+                                <img src='{avatar}' width='50' height='50'>
                             {/avatar}
                         </div>
                     {/user.teams}
 
-                    <div class='nav-team'  data-toggle="modal" data-target="#team-create">
+                    <div class='nav-team nav-team-add'  data-toggle="modal" data-target="#team-create">
                         <i class='fa fa-plus'></i>
                     </div>
                 </nav>
@@ -131,8 +131,13 @@
 
                 {#team.projects}
                     <div class='nav-project fluid fluid-stretch dropdown'>
-                        <div class='nav-project-icon nav-project-spacing'>
-                            <i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>
+                        <div class='nav-project-spacing'>
+                            <div class='nav-project-icon '>
+                            {#avatar}
+                                <img src='{avatar}' width='40' height='40'>
+                            {/avatar}
+                            <!--<i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>-->
+                            </div>
                         </div>
                         <div class='nav-project-info nav-project-spacing fill'>
                             <div class='project-name'>{name}</div>
@@ -145,6 +150,7 @@
                             </div>
                             <div class="dropdown-menu" aria-labelledby="nav-project-actions">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-form" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit project</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-change-avatar" data-id="{id}">Change avatar</a>
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-delete" data-modal-id="input,{id}">Delete project</a>

@@ -109,6 +109,16 @@ nav .nav-project:not(:last-child){
 
 .nav-project-icon {
 	font-size: 24px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.nav-project-icon {
+	border-radius: 7px;
+	overflow: hidden;
+}
+
+.nav-project-icon img {
+	min-width: 40px;
 }
 
 .nav-project-action-icon-a {
@@ -146,11 +156,10 @@ nav .nav-project:not(:last-child){
 }
 
 .nav-team {
-	background: white;
 	border-radius: 5px;
 	margin: 10px 4px;
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	opacity: 0.7;
 	cursor: pointer;
 	font-size: 30px;
@@ -160,6 +169,10 @@ nav .nav-project:not(:last-child){
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.nav-team-add {
+	background: white;
 }
 
 .nav-team:hover {

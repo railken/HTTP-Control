@@ -224,6 +224,15 @@ img {
     margin-left: 25px;
 }
 
+/*
+.cropper-view-box {
+    outline: 1px solid #505061;
+    outline-color: #7c7c97;
+}
+
+.cropper-point {
+    background-color: #505061;
+}*/
 .rotate-1 {
     transition-property: transform;
     transition-duration: 1s;

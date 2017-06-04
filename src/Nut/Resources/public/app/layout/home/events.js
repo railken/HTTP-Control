@@ -62,6 +62,7 @@ var BasicResource = function(resolver)
 			});
 		}
 
+
 		var btn_loader = new ButtonAjaxLoader($(this).find("[type='submit']"));
 		btn_loader.start();
 
@@ -71,6 +72,8 @@ var BasicResource = function(resolver)
 				params.avatar = value;
 				next()
 			});
+		} else {
+			next();
 		}
 	}
 
@@ -135,7 +138,22 @@ $('body').on('show.bs.modal', "[data-modal-type='team']", function (event) {
 
 });
 
-$('body').on('hide.bs.modal', "[data-modal-type='team']", function (event) {
+
+$('body').on('show.bs.modal', "[data-modal-type='project']", function (event) {
+
+	var button = $(event.relatedTarget);
+
+	var modal = $(this);
+	var id = button.attr('data-id');
+	var info;
+
+	var project = App.get('team').getProjectById(id);
+	modal.find("[name='id']").val(project.id);
+	modal.find("[data-team='avatar']").html("<img src='"+project.avatar+"'>");
+
+});
+
+$('body').on('hide.bs.modal', ".modal", function (event) {
 
 	var button = $(event.relatedTarget);
 
