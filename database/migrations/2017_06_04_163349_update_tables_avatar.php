@@ -14,11 +14,11 @@ class UpdateTablesAvatar extends Migration
     public function up()
     {
         Schema::table('teams', function($table) {
-            $table->text('avatar');
+            $table->text('avatar')->nullable();
         });
 
         Schema::table('projects', function($table) {
-            $table->text('avatar');
+            $table->text('avatar')->nullable();
         });
     }
 
