@@ -23,6 +23,23 @@ class ProjectManager extends ModelManager
         parent::__construct();
     }
 
+
+
+    /**
+     * Create a new ModelContract given array
+     *
+     * @param array $params
+     *
+     * @return Railken\Laravel\Manager\ModelContract
+     */
+    public function create(array $params)
+    {     
+        $entity = $this->getRepository()->newEntity();
+        $entity->uid = $this->getRepository()->generateUID();
+        return $this->update($entity, $params);
+
+    }
+
     /**
      * Fill the entity
      *
@@ -33,7 +50,7 @@ class ProjectManager extends ModelManager
      */
     public function fill(ModelContract $entity, array $params)
     {
-        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id', 'team', 'team_id']);
+        $params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id', 'team', 'team_id', 'avatar']);
 
         if (isset($params['user']) || isset($params['user_id'])) {
             $this->vars['user'] = $this->fillManyToOneById($entity, new UserManager(), $params, 'user');
@@ -41,6 +58,10 @@ class ProjectManager extends ModelManager
 
         if (isset($params['team']) || isset($params['team_id'])) {
             $this->vars['team'] = $this->fillManyToOneById($entity, new TeamManager(), $params, 'team');
+        }
+
+        if (isset($params['avatar'])) {
+            $this->vars['avatar'] = $this->base64ToUploadedFile($params['avatar']);
         }
 
         $entity->fill($params);
@@ -57,6 +78,9 @@ class ProjectManager extends ModelManager
      */
     public function save(ModelContract $entity)
     {
+        $this->throwExceptionAccessDenied('team.show', $entity->team);
+        $this->throwExceptionAccessDenied('project.save', $entity);
+
         $entity->user()->associate($this->vars->get('user', $entity->user));
         $entity->team()->associate($this->vars->get('team', $entity->team));
 
@@ -66,8 +90,13 @@ class ProjectManager extends ModelManager
             'team' => $entity->team
         ]);
 
-        $this->throwExceptionAccessDenied('team.show', $entity->team);
-        $this->throwExceptionAccessDenied('project.save', $entity);
+
+        if ($this->vars->get('avatar')) {
+            $filename = $entity->uid.'.'.$this->vars->get('avatar')->guessExtension();
+            $this->vars->get('avatar')->storeAs('project', $filename);
+            $filename = 'project/'.$filename;
+            $entity->avatar = $filename;
+        }
 
         return parent::save($entity);
     }

@@ -4,13 +4,15 @@ namespace Core\Project;
 
 class ProjectSerializer
 {
-    public function serialize(Project $project)
+    public function serialize(Project $entity)
     {
 
         return [
-            'id' => $project->id,
-            'name' => $project->name,
-            'description' => $project->description,
+            'id' => $entity->id,
+            'uid' => $entity->uid,
+            'name' => $entity->name,
+            'avatar' => \Storage::url($entity->avatar),
+            'description' => $entity->description,
         ];
     }
 }

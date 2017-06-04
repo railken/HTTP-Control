@@ -22,6 +22,20 @@ class TeamManager extends ModelManager
 
 		parent::__construct($agent);
 	}
+    /**
+     * Create a new ModelContract given array
+     *
+     * @param array $params
+     *
+     * @return Railken\Laravel\Manager\ModelContract
+     */
+    public function create(array $params)
+    {     
+        $entity = $this->getRepository()->newEntity();
+        $entity->uid = $this->getRepository()->generateUID();
+        return $this->update($entity, $params);
+
+    }
 
 	/**
 	 * Fill the entity
@@ -34,10 +48,14 @@ class TeamManager extends ModelManager
 	public function fill(ModelContract $entity, array $params)
 	{
 
-		$params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id']);
+		$params = $this->getOnlyParams($params, ['name', 'description', 'user', 'user_id', 'avatar']);
 
         if (isset($params['user']) || isset($params['user_id'])) {
             $this->vars['user'] = $this->fillManyToOneById($entity, new UserManager(), $params, 'user');
+        }
+
+        if (isset($params['avatar'])) {
+            $this->vars['avatar'] = $this->base64ToUploadedFile($params['avatar']);
         }
 
 		$entity->fill($params);
@@ -60,6 +78,13 @@ class TeamManager extends ModelManager
 		$this->throwExceptionParamsNull([
 			'name' => $entity->name,
 		]);
+
+        if ($this->vars->get('avatar')) {
+        	$filename = $entity->uid.'.'.$this->vars->get('avatar')->guessExtension();
+            $this->vars->get('avatar')->storeAs('teams', $filename);
+            $filename = 'teams/'.$filename;
+            $entity->avatar = $filename;
+        }
 
         $this->throwExceptionAccessDenied('team.save', $entity);
 

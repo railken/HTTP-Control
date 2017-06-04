@@ -14,4 +14,17 @@ class TeamRepository extends ModelRepository
 	 */
 	public $entity = Team::class;
 
+    /**
+     * Generate a unique uid
+     *
+     * @return string
+     */
+    public function generateUID()
+    {
+    	do {
+    		$uid = sha1(microtime());
+    	} while ($this->getQuery()->where('uid', $uid)->count());
+
+    	return $uid;
+    }
 }

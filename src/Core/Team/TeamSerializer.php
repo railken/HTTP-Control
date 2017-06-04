@@ -20,8 +20,10 @@ class TeamSerializer extends ModelSerializer
 	{
 		return [
 			'id' => $entity->id,
+			'uid' => $entity->uid,
 			'name' => $entity->name,
 			'description' => $entity->description,
+            'avatar' => \Storage::url($entity->avatar),
             'projects' => $this->projects($entity->projects),
 		];
 	}

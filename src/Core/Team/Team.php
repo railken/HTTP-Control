@@ -33,7 +33,9 @@ class Team extends Model implements ModelContract,  ResourceContract
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'description', 'user_id'];
+	protected $fillable = ['uid', 'name', 'description', 'user_id', 'avatar'];
+
+
 
     /**
      * User
