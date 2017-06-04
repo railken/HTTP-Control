@@ -23,6 +23,7 @@
     <link rel='stylesheet' href="{{ assets('Nut::vendor/railken/framework/src/Application/Application.css') }}">
     <link rel='stylesheet' href="{{ assets('Nut::vendor/railken/template/src/Template.css') }}">
     <link rel='stylesheet' href="{{ assets('Nut::vendor/font-awesome/font-awesome/src/css/font-awesome.css') }}">
+    <link rel='stylesheet' href="{{ assets('Nut::vendor/cropperjs/dist/cropper.css') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin-ext,cyrillic-ext' rel='stylesheet' type='text/css'>
 
@@ -43,7 +44,7 @@
         </div>
     </div>
 
-    <template data-name='header'>
+    <script type='text/template' name='header'>
         <div>
             
         </div>
@@ -68,16 +69,18 @@
         <div class='header-container-user'>
             {user.username}
         </div>
-    </template>
+    </script>
 
-    <template data-name='side-left'>
+    <script type='text/template' name='side-left'>
         <div class='side-left'>
 
             <div class='full-height fluid'>
                 <nav class='full-height nav-teams'>
                     {#user.teams}
                         <div class='nav-team' data-id='{id}' data-name='{name}' data-navigo="" href="/team/{id}">
-
+                            {#avatar}
+                                <img src='{avatar}' width='40' height='40'>
+                            {/avatar}
                         </div>
                     {/user.teams}
 
@@ -91,8 +94,8 @@
                 </div>
             </div>
         </div>
-    </template>
-    <template data-name='left-side-team'>
+    </script>
+    <script type='text/template' name='left-side-team'>
 
         {#team}
           <div class='container-left-side-top fluid fluid-vcenter'>
@@ -106,12 +109,13 @@
                         <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="nav-team-actions">
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit team</a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-delete" data-modal-id="input,{id}">Delete team</a>
-
-                        <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item" href="#" data-toggle="modal" data-modal-team_id='input,{team.id}' data-target="#project-create">Create project</a>
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-change-avatar">Change avatar</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-delete" data-modal-id="input,{id}">Delete</a>
                         <!--
                         <form method='POST' class='projects-delete'>
                             <input type='hidden' name='id' value='{id}'>
@@ -157,11 +161,11 @@
 
         <br><br><br><br><br><br>
         {/team}
-    </template>
-    <template data-name='layout'>@include('Nut::base')</template>
-    <template data-name='sign-in'>@include('Nut::sign-in')</template>
-    <template data-name='home'>@include('Nut::home')</template>
-    <template data-name='project'>@include('Nut::project')</template>
+    </script>
+    <script type='text/template' name='layout'>@include('Nut::base')</script>
+    <script type='text/template' name='sign-in'>@include('Nut::sign-in')</script>
+    <script type='text/template' name='home'>@include('Nut::home')</script>
+    <script type='text/template' name='project'>@include('Nut::project')</script>
 @endsection
 
 @section('scripts')
@@ -186,7 +190,8 @@
     <script src="{{ assets('Nut::vendor/railken/storage/src/CookieStorage.js') }}"></script>
     <script src="{{ assets('Nut::vendor/railken/flash/src/Flash.js') }}"></script>
 
-
+    <script src="{{ assets('Nut::vendor/cropperjs/dist/cropper.js') }}"></script>
+    <script src="{{ assets('Nut::vendor/railken/uploader/uploader.js') }}"></script>
     <!-- component -->
     <script src="{{ assets('Nut::component/toggle/toggle.js') }}"></script>
     <script src="{{ assets('Nut::component/modal/modal.js') }}"></script>

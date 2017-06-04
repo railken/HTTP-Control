@@ -9,6 +9,22 @@ function getParamsByForm(form)
 	return params;
 }
 
+var ButtonAjaxLoader = function(button)
+{
+	this.element = button;
+	this.start = function()
+	{
+		this.loader = $("<span><i class='fa fa-refresh rotate-1'></i>&nbsp;&nbsp;</span>");
+		this.element.prepend(this.loader);
+	};
+
+	this.end = function()
+	{
+		this.loader.remove();
+	};
+};
+
+
 $('body').on('submit', "[name='projects.create']", function(e) {
 	e.preventDefault();
 
@@ -93,17 +109,27 @@ $('body').on('submit', "[name='teams.update']", function(e) {
 
 	var resolver = new TeamResolver();
 
+	var next = function() { 
+		resolver.update(params.id, {
+			attributes: params,
+			success: function()
+			{
+				$(this).find("[name]").val('');
+				btn_loader.end();
+			}
+		});
+	}
 
-	resolver.update(params.id, {
-		attributes: {	
-			name: params.name,
-			description: params.description
-		},
-		success: function()
-		{
-			$(this).find("[name]").val('');
-		}
-	});
+	var btn_loader = new ButtonAjaxLoader($(this).find("[type='submit']"));
+	btn_loader.start();
+
+	if (typeof params.avatar !== "undefined") {
+
+		File.onLoad('avatar', function(value) {
+			params.avatar = value;
+			next()
+		});
+	}
 
 });
 
@@ -117,4 +143,29 @@ $('body').on('submit', "[name='teams.remove']", function(e) {
 		resolver.remove(params.id, {});
 	}, 100);
 	
+});
+
+$('body').on('show.bs.modal', "[data-modal-type='team']", function (event) {
+
+	var button = $(event.relatedTarget);
+
+	var modal = $(this);
+	var info;
+
+	modal.find("[name='id']").val(App.get('team').id);
+	modal.find("[data-team='avatar']").html("<img src='"+App.get('team').avatar+"'>");
+
+});
+
+$('body').on('hide.bs.modal', "[data-modal-type='team']", function (event) {
+
+	var button = $(event.relatedTarget);
+
+	var modal = $(this);
+	var info;
+
+	modal.find("[data-modal-reset='input']").val('');
+	modal.find("[data-modal-reset='html']").html('');
+	modal.find("[data-modal-reset='hide']").hide();
+
 });

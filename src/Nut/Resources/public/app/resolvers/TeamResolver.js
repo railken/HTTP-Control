@@ -45,7 +45,10 @@ TeamResolver.prototype.create = function(vars)
 				vars.success();
 		},
 		error: function(response) {
-			App.get('flash').error(response.message);
+
+			var message = response ? response.message : 'error';
+
+			App.get('flash').error(message);
 
 			if (vars.error)
 				vars.error();
@@ -91,7 +94,9 @@ TeamResolver.prototype.remove = function(id, vars)
 				self.template();
 			},
 			error: function(response) {
-				App.get('flash').error(response.message);
+
+				var message = response ? response.message : 'error';
+				App.get('flash').error(message);
 
 				if (vars.error)
 					vars.error();
@@ -116,7 +121,8 @@ TeamResolver.prototype.update = function(id, vars)
 
 	App.get('user').getTeamById(id).fill(vars.attributes);
 
-	self.template();
+	if (!vars.attributes.avatar)
+		self.template();
 
 	self.manager.update(
 		id,
@@ -133,8 +139,13 @@ TeamResolver.prototype.update = function(id, vars)
 					vars.success();
 			},
 			error: function(response) {
-				App.get('flash').error(response.message);
+
+				var message = response ? response.message : 'error';
+				App.get('flash').error(message);
+
 				self.template();
+
+				console.log(response);
 
 				if (vars.error)
 					vars.error();

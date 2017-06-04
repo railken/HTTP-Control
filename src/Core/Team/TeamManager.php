@@ -54,7 +54,7 @@ class TeamManager extends ModelManager
             $this->vars['user'] = $this->fillManyToOneById($entity, new UserManager(), $params, 'user');
         }
 
-        if (isset($params['avatar'])) {
+        if (!empty($params['avatar'])) {
             $this->vars['avatar'] = $this->base64ToUploadedFile($params['avatar']);
         }
 

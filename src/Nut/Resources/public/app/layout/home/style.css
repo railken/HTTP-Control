@@ -156,6 +156,10 @@ nav .nav-project:not(:last-child){
 	font-size: 30px;
 	text-align: center;
 	color: #505061;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .nav-team:hover {

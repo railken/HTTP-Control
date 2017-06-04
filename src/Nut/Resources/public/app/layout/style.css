@@ -21,6 +21,10 @@ main {
     padding-top: 51px;
 }
 
+img {
+    max-width: 100%;
+}
+
 .header-content {
     width: 100%;
     max-width: 1024px;

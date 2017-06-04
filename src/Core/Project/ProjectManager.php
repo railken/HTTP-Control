@@ -60,7 +60,7 @@ class ProjectManager extends ModelManager
             $this->vars['team'] = $this->fillManyToOneById($entity, new TeamManager(), $params, 'team');
         }
 
-        if (isset($params['avatar'])) {
+        if (!empty($params['avatar'])) {
             $this->vars['avatar'] = $this->base64ToUploadedFile($params['avatar']);
         }
 

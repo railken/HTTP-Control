@@ -54,6 +54,36 @@
     </div>
 </div>
 
+<div class="modal fade modal-small" data-modal-type='team' id='team-change-avatar'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header fluid">
+                <h5 class="modal-title">Updating a team</h5>
+                <div class='fill'></div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div data-team='avatar'></div>
+                <hr>
+                <form method='POST' class="modal-footer" name="teams.update">
+
+                    <div style='display: none;min-height: 100px;' id='team-avatar-container' data-modal-reset='hide'></div>
+                    <input type='file' class='form-control' data-uploader-image data-input='#team-input-avatar' data-preview='#team-avatar-container'  data-modal-reset='input'>
+                    <input type='hidden' name='avatar' id='team-input-avatar'>
+                    <input type='hidden' name='id' value=''>
+                    <br><br>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                    
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
 <div class="modal fade modal-small" id='team-delete'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">

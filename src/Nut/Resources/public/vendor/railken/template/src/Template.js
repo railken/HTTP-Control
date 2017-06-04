@@ -72,7 +72,10 @@ template.html = function(html, destination)
 template.get = function(source, vars)
 {
 
-	var source = template.getSource(source).html();
+	var source = template.getSource(source);
+	
+	if(!source)
+		return;
 
 	Mustache.parse(source, ['{','}']);
 
@@ -123,15 +126,10 @@ template.load = function(name)
  *
  * @return {DOM}
  */
-template.getSource = function(source)
+template.getSource = function(name)
 {
 
-
-	var source = $.parseHTML("<div>"+template.source[source]+"</div>");
-
-	source = $(source);
-	source.children().addClass('template-new');
-	return source.clone();
+	return template.source[name];
 };
 
 /**
@@ -141,9 +139,9 @@ template.getSource = function(source)
  */
 $(document).ready(function()
 {
-	$.map($("template"),function(tmpl){
+	$.map($("script[type='text/template']"),function(tmpl){
 		tmpl = $(tmpl);
-		var name = tmpl.attr('data-name');
+		var name = tmpl.attr('name');
 		template.source[name] = tmpl.html();
 		tmpl.remove();
 	});
