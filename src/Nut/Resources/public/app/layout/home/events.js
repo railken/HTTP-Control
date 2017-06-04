@@ -77,7 +77,7 @@ var BasicResource = function(resolver)
 		}
 	}
 
-	this.delete = function(form)
+	this.remove = function(form)
 	{
 		$('.modal').modal('hide');
 		var id = form.find("[name='id']").val();
@@ -129,27 +129,29 @@ $('body').on('submit', "[name='teams.remove']", function(e) {
 $('body').on('show.bs.modal', "[data-modal-type='team']", function (event) {
 
 	var button = $(event.relatedTarget);
-
+	var id = button.attr('data-id');
 	var modal = $(this);
-	var info;
 
-	modal.find("[name='id']").val(App.get('team').id);
-	modal.find("[data-team='avatar']").html("<img src='"+App.get('team').avatar+"'>");
+	var team = App.get('user').getTeamById(id);
+
+	modal.html(template.get(modal.attr('data-modal-template'), {team: team}));
 
 });
 
 
 $('body').on('show.bs.modal', "[data-modal-type='project']", function (event) {
 
+
 	var button = $(event.relatedTarget);
+	var id = button.attr('data-id');
+	var team_id = button.attr('data-team-id');
+
+	var team = App.get('user').getTeamById(team_id);
+	var project = team.getProjectById(id);
 
 	var modal = $(this);
-	var id = button.attr('data-id');
-	var info;
 
-	var project = App.get('team').getProjectById(id);
-	modal.find("[name='id']").val(project.id);
-	modal.find("[data-team='avatar']").html("<img src='"+project.avatar+"'>");
+	modal.html(template.get(modal.attr('data-modal-template'), {team: team, project: project}));
 
 });
 

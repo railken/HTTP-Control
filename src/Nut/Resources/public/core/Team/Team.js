@@ -2,9 +2,11 @@ var Team = function(attributes)
 {
 
 
-	attributes.projects = attributes.projects.map(function(project) {
-		return new Project(project);
-	});
+	if (attributes.projects) {
+		attributes.projects = attributes.projects.map(function(project) {
+			return new Project(project);
+		});
+	}
 
 	this.fill(attributes);
 

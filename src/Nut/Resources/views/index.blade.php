@@ -81,6 +81,9 @@
                             {#avatar}
                                 <img src='{avatar}' width='50' height='50'>
                             {/avatar}
+                            {^avatar}
+                                <i class='fa fa-plus'></i>
+                            {/avatar}
                         </div>
                     {/user.teams}
 
@@ -110,12 +113,12 @@
                     </div>
                     <div class="dropdown-menu" aria-labelledby="nav-team-actions">
 
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-modal-team_id='input,{team.id}' data-target="#project-create">Create project</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-team-id='{team.id}' data-target="#project-create">Create project</a>
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit</a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-change-avatar">Change avatar</a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-delete" data-modal-id="input,{id}">Delete</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-id="{id}">Edit</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-change-avatar" data-id="{id}">Change avatar</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-remove" data-id="{id}">Remove</a>
                         <!--
                         <form method='POST' class='projects-delete'>
                             <input type='hidden' name='id' value='{id}'>
@@ -132,11 +135,13 @@
                 {#team.projects}
                     <div class='nav-project fluid fluid-stretch dropdown'>
                         <div class='nav-project-spacing'>
-                            <div class='nav-project-icon '>
+                            <div class='nav-project-icon'>
                             {#avatar}
                                 <img src='{avatar}' width='40' height='40'>
                             {/avatar}
-                            <!--<i class='fa fa-cubes nav-project-icon nav-project-action-icon'></i>-->
+                            {^avatar}
+                                <i class='fa fa-cubes nav-project-icon-default nav-project-action-icon'></i>
+                            {/avatar}
                             </div>
                         </div>
                         <div class='nav-project-info nav-project-spacing fill'>
@@ -149,11 +154,11 @@
                                 <i class='fa fa-ellipsis-h nav-project-action-icon'></i>
                             </div>
                             <div class="dropdown-menu" aria-labelledby="nav-project-actions">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-form" data-modal-id="input,{id}" data-modal-name="input,{name}"  data-modal-description="textarea,{description}">Edit project</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-change-avatar" data-id="{id}">Change avatar</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-update" data-id="{id}" data-team-id='{team.id}'>Edit project</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-change-avatar" data-id="{id}" data-team-id='{team.id}'>Change avatar</a>
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-delete" data-modal-id="input,{id}">Delete project</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#project-remove" data-id="{id}" data-team-id='{team.id}'>Remove project</a>
                                 <!--
                                 <form method='POST' class='projects-delete'>
                                     <input type='hidden' name='id' value='{id}'>
@@ -172,6 +177,9 @@
     <script type='text/template' name='sign-in'>@include('Nut::sign-in')</script>
     <script type='text/template' name='home'>@include('Nut::home')</script>
     <script type='text/template' name='project'>@include('Nut::project')</script>
+
+    @include('Nut::modals/project')
+    @include('Nut::modals/team')
 @endsection
 
 @section('scripts')

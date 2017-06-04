@@ -109,7 +109,7 @@ nav .nav-project:not(:last-child){
 
 .nav-project-icon {
 	font-size: 24px;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+	/*box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);*/
 }
 
 .nav-project-icon {
@@ -117,8 +117,17 @@ nav .nav-project:not(:last-child){
 	overflow: hidden;
 }
 
-.nav-project-icon img {
+.nav-project-icon-default {
+	font-size: 24px;
+	text-align: center;
+	line-height: 40px;
+	width: 40px;
+	height: 40px;
+}
+.nav-project-icon {
 	min-width: 40px;
+	width: 40px;
+	height: 40px;
 }
 
 .nav-project-action-icon-a {

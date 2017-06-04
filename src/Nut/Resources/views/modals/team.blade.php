@@ -1,4 +1,5 @@
-<div class="modal fade modal-small" id='team-create'>
+
+<script type='text/template' name='team-create'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header fluid">
@@ -15,7 +16,6 @@
                     <br>
                     <textarea class='form-control' placeholder='Team description' rows='10' name='description'></textarea>
                     <br>
-                    <input type='hidden' name='id' value=''>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" >Create</button>
                     
@@ -24,9 +24,9 @@
             
         </div>
     </div>
-</div>
+</script>
 
-<div class="modal fade modal-small" id='team-update'>
+<script type='text/template' name='team-update'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header fluid">
@@ -39,11 +39,11 @@
             <div class="modal-body">
                 <form method='POST' class="modal-footer" name="teams.update">
 
-                    <input type='text' class='form-control' name='name' placeholder='Team name'>
+                    <input type='text' class='form-control' name='name' placeholder='Team name' value='{team.name}'>
                     <br>
-                    <textarea class='form-control' placeholder='Team description' rows='10' name='description'></textarea>
+                    <textarea class='form-control' placeholder='Team description' rows='10' name='description'>{team.description}</textarea>
                     <br>
-                    <input type='hidden' name='id' value=''>
+                    <input type='hidden' name='id' value='{team.id}'>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" >Save changes</button>
                     
@@ -52,9 +52,8 @@
             
         </div>
     </div>
-</div>
-
-<div class="modal fade modal-small" data-modal-type='team' id='team-change-avatar'>
+</script>
+<script type='text/template' name='team-change-avatar'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header fluid">
@@ -65,26 +64,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div data-team='avatar'></div>
+                <div><img src='{team.avatar}'></div>
                 <hr>
                 <form method='POST' class="modal-footer" name="teams.update">
 
-                    <div style='display: none;min-height: 100px;' id='team-avatar-container' data-modal-reset='hide'></div>
-                    <input type='file' class='form-control' data-uploader-image data-input='#team-input-avatar' data-preview='#team-avatar-container'  data-modal-reset='input'>
+                    <div style='display: none;min-height: 100px;' id='team-avatar-container'></div>
+                    <input type='file' class='form-control' data-uploader-image data-input='#team-input-avatar' data-preview='#team-avatar-container' >
                     <input type='hidden' name='avatar' id='team-input-avatar'>
-                    <input type='hidden' name='id' value=''>
+                    <input type='hidden' name='id' value='{team.id}'>
                     <br><br>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" >Save changes</button>
                     
                 </form>
             </div>
-            
         </div>
     </div>
-</div>
+</script>
 
-<div class="modal fade modal-small" id='team-delete'>
+
+<script type='text/template' name='team-remove'>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header fluid">
@@ -99,11 +98,11 @@
             </div>
             
             <form method='POST' class="modal-footer" name='teams.remove'>
-                <input type='hidden' name='id' value=''>
-                <button type="submit" class="btn btn-primary" >Yes, delete</button>
+                <input type='hidden' name='id' value='{team.id}'>
+                <button type="submit" class="btn btn-primary" >Yes, remove</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
                 
             </form>
         </div>
     </div>
-</div>
+</script>
