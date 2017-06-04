@@ -23,7 +23,7 @@ class TeamSerializer extends ModelSerializer
 			'uid' => $entity->uid,
 			'name' => $entity->name,
 			'description' => $entity->description,
-            'avatar' => \Storage::url($entity->avatar)."?=".\Storage::lastModified($entity->avatar),
+            'avatar' => $entity->avatar ? \Storage::url($entity->avatar)."?=".\Storage::lastModified($entity->avatar) : null,
             'projects' => $this->projects($entity->projects),
 		];
 	}
